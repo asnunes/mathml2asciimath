@@ -1,0 +1,13 @@
+{
+  "name": "mathml2asciimath",
+  "version": "0.0.1",
+  "description": "A javascript tool to convert mathml syntax to asciimath",
+  "main": "index.js",
+  "repository": "git@github.com:asnunes/mathml2asciimath.git",
+  "author": "Alexandre Nunes <alexandrenunes@poli.ufrj.br>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "xmldoc": "^1.1.2"
+  }
+}
