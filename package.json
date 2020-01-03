@@ -1,6 +1,7 @@
 {
   "name": "mathml2asciimath",
   "version": "0.0.1",
+  "type": "module",
   "description": "A javascript tool to convert mathml syntax to asciimath",
   "main": "index.js",
   "repository": "git@github.com:asnunes/mathml2asciimath.git",

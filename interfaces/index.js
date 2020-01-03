@@ -1,0 +1,1 @@
+export { XmldocInterface } from './XmldocInterface';

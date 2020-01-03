@@ -1,9 +1,36 @@
-import xmldoc from 'xmldoc';
+import { XmldocInterface } from './interfaces/XmldocInterface.js';
 
-export class mathml2asciimath {
-  constructor(mathmlString) {
-    this.xmlRepresentation = _parseXML(mathmlString);
+export class Mathml2Asciimath {
+  constructor(html) {
+    this.parsedElements = new XmldocInterface(html).parse();
+  }
+
+  convert() {
+    console.log(JSON.stringify(this.parsedElements));
   }
 }
 
-const _parseXML = mathmlString => new xmldoc.XmlDocument(mathmlString);
+const mathml = `
+<math>
+    <mrow>
+      <mrow>
+        <msup>
+          <mi>a</mi>
+          <mn>2</mn>
+        </msup>
+        <mo>+</mo>
+        <msup>
+          <mi>b</mi>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+        <mo>=</mo>
+      <msup>
+        <mi>c</mi>
+        <mn>2</mn>
+      </msup>
+    </mrow>
+</math>
+`;
+
+console.log(new Mathml2Asciimath(mathml).convert());
