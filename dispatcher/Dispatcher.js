@@ -4,6 +4,7 @@ const MN = require('../asciimath-tags/MN');
 const MO = require('../asciimath-tags/MO');
 const MRow = require('../asciimath-tags/MRow');
 const MSup = require('../asciimath-tags/MSup');
+const MSqrt = require('../asciimath-tags/MSqrt');
 
 module.exports = class Dispatcher {
   constructor(el) {
@@ -14,7 +15,6 @@ module.exports = class Dispatcher {
     const { name, value, attr } = this.el;
     const children = this.el.children.map(el => new Dispatcher(el).dispatch());
 
-    console.log(this.el);
     switch (name) {
       case 'math':
         return new Math({ value, attr, children });
@@ -22,6 +22,8 @@ module.exports = class Dispatcher {
         return new MRow({ value, attr, children });
       case 'msup':
         return new MSup({ value, attr, children });
+      case 'msqrt':
+        return new MSqrt({ value, attr, children });
       case 'mi':
         return new MI({ value, attr, children });
       case 'mo':

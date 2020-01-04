@@ -10,10 +10,9 @@ class Mathml2Asciimath {
   convert() {
     console.log(this.parsedAscii.map(tag => tag.toAsciimath()).join(''));
   }
-
 }
 
-const mathml = `
+const mathml1 = `
 <root>
   <math>
       <mrow>
@@ -38,4 +37,36 @@ const mathml = `
 </root>
 `;
 
-console.log(new Mathml2Asciimath(mathml).convert());
+const mathml2 = `
+<root>
+  <math>
+    <msqrt>
+      <mn>2</mn>
+    </msqrt>
+  </math>
+</root>
+`;
+
+const mathml3 = `
+<root>
+  <math>
+    <msqrt>
+      <mrow>
+        <mrow>
+          <msup>
+            <mi>a</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+        </mrow>
+    </mrow>
+    </msqrt>
+  </math>
+</root>
+`;
+
+console.log(new Mathml2Asciimath(mathml3).convert());
