@@ -115,3 +115,22 @@ describe('given math string with msup tag containing multiple chars contents', (
     expect(result).toMatch('(a+2)^(b-3)');
   });
 });
+
+describe('given math string with mfenced with single content and no attr', () => {
+  test('parse mfenced wrapping it content inside parentheses', () => {
+    const matml = `
+      <root>
+        <math>
+        <mfenced>
+          <mn>3</mn>
+        </mfenced>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('(3)');
+  });
+});

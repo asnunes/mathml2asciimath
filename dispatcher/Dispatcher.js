@@ -5,6 +5,7 @@ const MO = require('../asciimath-tags/MO');
 const MRow = require('../asciimath-tags/MRow');
 const MSup = require('../asciimath-tags/MSup');
 const MSqrt = require('../asciimath-tags/MSqrt');
+const MFenced = require('../asciimath-tags/MFenced');
 
 module.exports = class Dispatcher {
   constructor(el) {
@@ -24,6 +25,8 @@ module.exports = class Dispatcher {
         return new MSup({ value, attr, children });
       case 'msqrt':
         return new MSqrt({ value, attr, children });
+      case 'mfenced':
+        return new MFenced({ value, attr, children });
       case 'mi':
         return new MI({ value, attr, children });
       case 'mo':
