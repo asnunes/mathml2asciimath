@@ -1,6 +1,6 @@
-import { XmldocInterface } from './interfaces/XmldocInterface.js';
+const XmldocInterface = require('./interfaces/XmldocInterface');
 
-export class Mathml2Asciimath {
+class Mathml2Asciimath {
   constructor(html) {
     this.parsedElements = new XmldocInterface(html).parse();
   }
@@ -11,26 +11,28 @@ export class Mathml2Asciimath {
 }
 
 const mathml = `
-<math>
-    <mrow>
+<root>
+  <math>
       <mrow>
+        <mrow>
+          <msup>
+            <mi>a</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+        </mrow>
+          <mo>=</mo>
         <msup>
-          <mi>a</mi>
-          <mn>2</mn>
-        </msup>
-        <mo>+</mo>
-        <msup>
-          <mi>b</mi>
+          <mi>c</mi>
           <mn>2</mn>
         </msup>
       </mrow>
-        <mo>=</mo>
-      <msup>
-        <mi>c</mi>
-        <mn>2</mn>
-      </msup>
-    </mrow>
-</math>
+  </math>
+</root>
 `;
 
 console.log(new Mathml2Asciimath(mathml).convert());

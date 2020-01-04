@@ -1,26 +1,34 @@
-import xmldoc from 'xmldoc';
+const xmldoc = require('xmldoc');
 
-export class XmldocInterface {
-    constructor(html) {
-        this.xmlDocument = xmldoc.XmlDocument(html);
-    }
+module.exports = class XmldocInterface {
+  constructor(html) {
+    this.xmlDocument = new xmldoc.XmlDocument(html);
+  }
 
-    parse() {
-        return this.getMathTags().map(el => this.parseElement(el));
-    }
+  parse() {
+    return this.filterAndParseElements(this.getMathTags());
+  }
 
-    parseElement(element) {
-        return {
-            name: element.name,
-            attr: element.attr,
-            value: element.value,
-            children: _hasNoChild(element) ? [] : element.children.map(el => this.parseElement(el))
-        };
-    }
+  filterAndParseElements(els) {
+    return els
+      .filter(el => el.constructor.name === ELEMENT_CONSTRUCTOR_NAME)
+      .map(el => this.parseElement(el));
+  }
 
-    getMathTags() {
-        return this.xmlDocument.childNamed('math');
-    }
+  parseElement(element) {
+    return {
+      name: element.name,
+      attr: element.attr,
+      value: element.value,
+      children: _hasNoChild(element) ? [] : this.filterAndParseElements(element.children)
+    };
+  }
+
+  getMathTags() {
+    return this.xmlDocument.childrenNamed('math');
+  }
 }
+
+const ELEMENT_CONSTRUCTOR_NAME = 'XmlElement';
 
 const _hasNoChild = el => el.children.length === 0;
