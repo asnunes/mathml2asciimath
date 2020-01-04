@@ -1,0 +1,15 @@
+const BaseTag = require('./BaseTag');
+
+module.exports = class MI extends BaseTag {
+  constructor(tag) {
+    super(tag);
+  }
+
+  toAsciimath() {
+    const { children, value } = this.tag;
+    console.log(children);
+    if (children.length > 0) throw new Error('MI tag should not have children');
+
+    return value;
+  }
+}

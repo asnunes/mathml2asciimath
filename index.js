@@ -1,13 +1,16 @@
 const XmldocInterface = require('./interfaces/XmldocInterface');
+const AsciiInterface = require('./interfaces/AsciiInterface');
 
 class Mathml2Asciimath {
   constructor(html) {
-    this.parsedElements = new XmldocInterface(html).parse();
+    this.parsedXml = new XmldocInterface(html).parse();
+    this.parsedAscii = new AsciiInterface(this.parsedXml).parse();
   }
 
   convert() {
-    console.log(JSON.stringify(this.parsedElements));
+    console.log(this.parsedAscii.map(tag => tag.toAsciimath()).join(''));
   }
+
 }
 
 const mathml = `

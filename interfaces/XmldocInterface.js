@@ -19,7 +19,7 @@ module.exports = class XmldocInterface {
     return {
       name: element.name,
       attr: element.attr,
-      value: element.value,
+      value: element.val,
       children: _hasNoChild(element) ? [] : this.filterAndParseElements(element.children)
     };
   }
