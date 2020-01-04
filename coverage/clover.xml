@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1578147422771" clover="3.2.0">
+  <project timestamp="1578147422772" name="All files">
+    <metrics statements="94" coveredstatements="80" conditionals="22" coveredconditionals="11" methods="37" coveredmethods="33" elements="153" coveredelements="124" complexity="0" loc="94" ncloc="94" packages="4" files="12" classes="12"/>
+    <package name="mathml2asciimath">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="index.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/index.js">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="mathml2asciimath.asciimath-tags">
+      <metrics statements="48" coveredstatements="37" conditionals="12" coveredconditionals="4" methods="19" coveredmethods="15"/>
+      <file name="BaseTag.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/asciimath-tags/BaseTag.js">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+      </file>
+      <file name="MI.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/asciimath-tags/MI.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="MN.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/asciimath-tags/MN.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="3" type="stmt"/>
+      </file>
+      <file name="MO.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/asciimath-tags/MO.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="2" type="stmt"/>
+      </file>
+      <file name="MRow.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/asciimath-tags/MRow.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+      </file>
+      <file name="MSqrt.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/asciimath-tags/MSqrt.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="MSup.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/asciimath-tags/MSup.js">
+        <metrics statements="13" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+      <file name="Math.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/asciimath-tags/Math.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="mathml2asciimath.dispatcher">
+      <metrics statements="21" coveredstatements="18" conditionals="8" coveredconditionals="6" methods="3" coveredmethods="3"/>
+      <file name="Dispatcher.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/dispatcher/Dispatcher.js">
+        <metrics statements="21" coveredstatements="18" conditionals="8" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="18" count="12" type="cond" truecount="6" falsecount="2"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="mathml2asciimath.interfaces">
+      <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="12" coveredmethods="12"/>
+      <file name="AsciiInterface.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/interfaces/AsciiInterface.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+      </file>
+      <file name="XmldocInterface.js" path="/Users/alexandrenunes/Documents/projetos/mathml2asciimath/interfaces/XmldocInterface.js">
+        <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="8"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="13" count="16" type="stmt"/>
+        <line num="14" count="30" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

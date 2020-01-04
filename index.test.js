@@ -1,0 +1,89 @@
+const Mathml2asciimath = require('./index');
+
+describe('given math string with mi tag', () => {
+  test('parse mi to simple ascii variable', () => {
+    const matml = '<root><math><mi>a</mi></math></root>';
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('a');
+  });
+});
+
+describe('given math string with mo tag with simple operator', () => {
+  test('parse mo just passing it operator as string', () => {
+    const matml = `
+    <root>
+      <math>
+          <mo>+</mo>
+      </math>
+    </root>
+  `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('+');
+  });
+});
+
+describe('given math string with mrow tag', () => {
+  test('parse mrow just wrapping its content', () => {
+    const matml = `
+    <root>
+      <math>
+        <mrow>
+          <mn>2</mn>
+          <mo>+</mo>
+          <mn>2</mn>
+        </mrow>
+      </math>
+    </root>
+  `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('2+2');
+  });
+});
+
+describe('given math string with msqrt tag', () => {
+  test('parse msqrt wrapping its content inside sqrt ascii command', () => {
+    const matml = `
+    <root>
+      <math>
+        <msqrt>
+          <mn>2</mn>
+        </msqrt>
+      </math>
+    </root>
+  `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('sqrt(2)');
+  });
+});
+
+describe('given math string with msup tag containing single char contents', () => {
+  test('parse msup wrapping joining its two char contents into quotes', () => {
+    const matml = `
+      <root>
+        <math>
+          <msup>
+            <mi>a</mi>
+            <mn>2</mn>
+          </msup>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('a^2');
+  });
+});
