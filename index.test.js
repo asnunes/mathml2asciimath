@@ -69,7 +69,7 @@ describe('given math string with msqrt tag', () => {
 });
 
 describe('given math string with msup tag containing single char contents', () => {
-  test('parse msup wrapping joining its two char contents into quotes', () => {
+  test('parse msup joining its two char contents with \^', () => {
     const matml = `
       <root>
         <math>
@@ -85,5 +85,33 @@ describe('given math string with msup tag containing single char contents', () =
     console.log(result);
     
     expect(result).toMatch('a^2');
+  });
+});
+
+describe('given math string with msup tag containing multiple chars contents', () => {
+  test('parse msup wrapping them using parentheses and joining its two strings contents into \^', () => {
+    const matml = `
+      <root>
+        <math>
+          <msup>
+            <mrow>
+              <mi>a</mi>
+              <mo>+</mo>
+              <mi>2</mi>
+            </mrow>
+            <mrow>
+              <mi>b</mi>
+              <mo>-</mo>
+              <mi>3</mi>
+            </mrow>
+          </msup>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('(a+2)^(b-3)');
   });
 });

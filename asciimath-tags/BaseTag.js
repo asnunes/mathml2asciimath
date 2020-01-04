@@ -4,6 +4,6 @@ module.exports = class BaseTag {
   }
 
   toAsciimath() {
-    new Error('tag not implemented');
+    // subclass responsibility
   }
 }

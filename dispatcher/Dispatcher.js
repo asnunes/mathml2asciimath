@@ -31,8 +31,7 @@ module.exports = class Dispatcher {
       case 'mn':
         return new MN({ value, attr, children });
       default:
-        throw new Error('tag not implemented');
-        break;
+        return new Error('tag not implemented');
     }
   }
 }
