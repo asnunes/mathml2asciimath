@@ -6,4 +6,8 @@ module.exports = class BaseTag {
   toAsciimath() {
     // subclass responsibility
   }
+
+  mapChildrenToAsciimath() {
+    return this.tag.children.map(tag => tag.toAsciimath());
+  }
 }

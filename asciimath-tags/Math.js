@@ -6,6 +6,6 @@ module.exports = class Math extends BaseTag {
   }
 
   toAsciimath() {
-    return this.tag.children.map(tag => tag.toAsciimath()).join('');
+    return this.mapChildrenToAsciimath().join('');
   }
 }

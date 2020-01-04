@@ -8,7 +8,6 @@ module.exports = class MFenced extends BaseTag {
   }
 
   toAsciimath() {
-    const { children } = this.tag;
-    return `(${children.join(',')})`;
+    return `(${this.mapChildrenToAsciimath().join(',')})`;
   }
 }
