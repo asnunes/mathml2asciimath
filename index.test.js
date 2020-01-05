@@ -11,6 +11,17 @@ describe('given math string with mi tag', () => {
   });
 });
 
+describe('given math string with mi tag with space on it', () => {
+  test('should trim empty space', () => {
+    const matml = '<root><math><mi> a </mi></math></root>';
+    
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('a');
+  });
+});
+
 describe('given math string with mo tag with simple operator', () => {
   test('parse mo just passing it operator as string', () => {
     const matml = `

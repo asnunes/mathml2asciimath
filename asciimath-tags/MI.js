@@ -1,3 +1,4 @@
+const trim = require('trim');
 const BaseTag = require('./BaseTag');
 
 module.exports = class MI extends BaseTag {
@@ -9,6 +10,6 @@ module.exports = class MI extends BaseTag {
     const { children, value } = this.tag;
     if (children.length > 0) return this.mapChildrenToAsciimath().join('');
 
-    return value;
+    return trim(value);
   }
 }
