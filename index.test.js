@@ -527,3 +527,24 @@ describe('given math string with menclose tag with notation attribute equals to 
     expect(result).toMatch('bar(a+2)');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'bottom\'', () => {
+  test('parse menclose placing content as argument of ul command', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='bottom'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('ul(a+2)');
+  });
+});
