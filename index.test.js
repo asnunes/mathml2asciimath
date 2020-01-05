@@ -696,3 +696,24 @@ describe('given math string with menclose tag with notation attribute equals to 
   });
 });
 
+describe('given math string with merror tag', () => {
+  test('parse merror placing its content inside color(red) followed by |, ul, bar commands and finally |', () => {
+    const matml = `
+      <root>
+        <math>
+          <merror>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </merror>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('color(red)(|ul(bar(a+2))|)');
+  });
+});
+
