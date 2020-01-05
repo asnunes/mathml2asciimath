@@ -134,3 +134,62 @@ describe('given math string with mfenced with single content and no attr', () =>
     expect(result).toMatch('(3)');
   });
 });
+
+describe('given math string with mfenced with more than one content and no attr', () => {
+  test('parse mfenced wrapping it content inside parentheses and joining using commas', () => {
+    const matml = `
+      <root>
+        <math>
+        <mfenced>
+          <mn>3</mn>
+          <mn>2</mn>
+          <mn>1</mn>
+        </mfenced>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('(3,2,1)');
+  });
+});
+
+describe('given math string with mfenced with single content, open and close attrs settled as {', () => {
+  test('parse mfenced wrapping it content inside parentheses', () => {
+    const matml = `
+      <root>
+        <math>
+        <mfenced open='{' close='}'>
+          <mn>3</mn>
+        </mfenced>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('{3}');
+  });
+});
+
+describe('given math string with mfenced with single content, open attr settled as { and void close tag' , () => {
+  test('parse mfenced wrapping it content inside parentheses', () => {
+    const matml = `
+      <root>
+        <math>
+        <mfenced open='{' close >
+          <mn>3</mn>
+        </mfenced>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('{3:}');
+  });
+});

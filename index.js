@@ -1,9 +1,9 @@
-const XmldocInterface = require('./interfaces/XmldocInterface');
+const XmldomInterface = require('./interfaces/XmldomInterface');
 const AsciiInterface = require('./interfaces/AsciiInterface');
 
 module.exports = class Mathml2Asciimath {
   constructor(xml) {
-    this.parsedXml = new XmldocInterface(xml).parse();
+    this.parsedXml = new XmldomInterface(xml).parse();
     this.parsedAscii = new AsciiInterface(this.parsedXml).parse();
   }
 
