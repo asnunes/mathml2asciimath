@@ -9,7 +9,7 @@ module.exports = class MFenced extends BaseTag {
   }
 
   toAsciimath() {
-    const asciimathChildren = this.mapChildrenToAsciimath().join(',')
+    const asciimathChildren = this.mapChildrenToAsciimath().join(',');
     return `${this.open}${asciimathChildren}${this.close}`;
   }
 

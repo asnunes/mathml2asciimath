@@ -1,4 +1,6 @@
 const BaseTag = require('./BaseTag');
+const addParenthesesIfIsMoreThanOneChar = require('../utils/addParenthesesToMultipleCharString');
+
 
 module.exports = class MSup extends BaseTag {
   constructor(tag) {
@@ -14,13 +16,9 @@ module.exports = class MSup extends BaseTag {
 
     const base = children[0];
     const exponent = children[1];
-    const baseAscii = _addParenthesesIfIsMoreThanOneChar(base.toAsciimath());
-    const exponentAscii = _addParenthesesIfIsMoreThanOneChar(exponent.toAsciimath());
+    const baseAscii = addParenthesesIfIsMoreThanOneChar(base.toAsciimath());
+    const exponentAscii = addParenthesesIfIsMoreThanOneChar(exponent.toAsciimath());
   
     return `${baseAscii}^${exponentAscii}`;
   }
-}
-
-const _addParenthesesIfIsMoreThanOneChar = str => {
-  return str.length > 1 ? `(${str})` : str;
 }
