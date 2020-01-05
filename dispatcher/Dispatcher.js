@@ -13,26 +13,26 @@ module.exports = class Dispatcher {
   }
 
   dispatch() {
-    const { name, value, attr } = this.el;
+    const { name, value, attributes } = this.el;
     const children = this.el.children.map(el => new Dispatcher(el).dispatch());
 
     switch (name) {
       case 'math':
-        return new Math({ value, attr, children });
+        return new Math({ value, attributes, children });
       case 'mrow':
-        return new MRow({ value, attr, children });
+        return new MRow({ value, attributes, children });
       case 'msup':
-        return new MSup({ value, attr, children });
+        return new MSup({ value, attributes, children });
       case 'msqrt':
-        return new MSqrt({ value, attr, children });
+        return new MSqrt({ value, attributes, children });
       case 'mfenced':
-        return new MFenced({ value, attr, children });
+        return new MFenced({ value, attributes, children });
       case 'mi':
-        return new MI({ value, attr, children });
+        return new MI({ value, attributes, children });
       case 'mo':
-        return new MO({ value, attr, children });
+        return new MO({ value, attributes, children });
       case 'mn':
-        return new MN({ value, attr, children });
+        return new MN({ value, attributes, children });
       default:
         return new Error('tag not implemented');
     }

@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "trim": "^0.0.1",
-    "xmldoc": "^1.1.2"
+    "xmldom": "^0.2.1"
   },
   "devDependencies": {
     "jest": "^24.9.0"
