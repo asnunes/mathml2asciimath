@@ -7,19 +7,14 @@ module.exports = class MEnclose extends BaseTag {
   }
 
   toAsciimath() {
-    switch (this.notation) {
-      case 'longdiv':
-        return `)bar(${this.mapChildrenToAsciimath().join('')})`;
-      case 'actuarial':
-        return `bar(${this.mapChildrenToAsciimath().join('')})|`;
-      case 'box':
-        return `|ul(bar(${this.mapChildrenToAsciimath().join('')}))|`;
-      case 'roundedbox':
-        return `(ul(bar(${this.mapChildrenToAsciimath().join('')})))`;
-      case 'circle':
-        return `(ul(bar(${this.mapChildrenToAsciimath().join('')})))`;
-      default:
-        return this.mapChildrenToAsciimath().join('');
-    }
+    const childrenAsciimath = this.mapChildrenToAsciimath().join('');
+
+    return {
+      longdiv: `)bar(${childrenAsciimath})`,
+      actuarial: `bar(${childrenAsciimath})|`,
+      box: `|ul(bar(${childrenAsciimath}))|`,
+      roundedbox: `(ul(bar(${childrenAsciimath})))`,
+      circle: `(ul(bar(${childrenAsciimath})))`
+    }[this.notation] || childrenAsciimath;
   }
 }
