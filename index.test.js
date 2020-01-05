@@ -485,3 +485,45 @@ describe('given math string with menclose tag with notation attribute equals to 
     expect(result).toMatch('|a+2');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'right\'', () => {
+  test('parse menclose placing content followed by |', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='right'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('a+2|');
+  });
+});
+
+describe('given math string with menclose tag with notation attribute equals to \'top\'', () => {
+  test('parse menclose placing content as argument of bar command', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='top'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('bar(a+2)');
+  });
+});

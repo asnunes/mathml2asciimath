@@ -16,6 +16,8 @@ module.exports = class MEnclose extends BaseTag {
       roundedbox: `(ul(bar(${childrenAsciimath})))`,
       circle: `(ul(bar(${childrenAsciimath})))`,
       left: `|${childrenAsciimath}`,
+      right: `${childrenAsciimath}|`,
+      top: `bar(${childrenAsciimath})`,
     }[this.notation] || childrenAsciimath;
   }
 }
