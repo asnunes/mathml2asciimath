@@ -7,7 +7,7 @@ module.exports = class MI extends BaseTag {
 
   toAsciimath() {
     const { children, value } = this.tag;
-    if (children.length > 0) throw new Error('MI tag should not have children');
+    if (children.length > 0) return this.mapChildrenToAsciimath().join('');
 
     return value;
   }

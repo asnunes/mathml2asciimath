@@ -235,7 +235,7 @@ describe('given math string with mfenced with single content, open and close att
 
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
-    
+
     expect(result).toMatch('{3}');
   });
 });
@@ -779,6 +779,23 @@ describe('given math string with merror tag', () => {
     console.log(result);
 
     expect(result).toMatch('color(red)(|ul(bar(a+2))|)');
+  });
+});
+
+describe('given math string with mglyph tag', () => {
+  test('ignore it', () => {
+    const matml = `
+      <root>
+        <math>
+          <mi><mglyph src="my-glyph.png" alt="my glyph"/></mi>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('');
   });
 });
 
