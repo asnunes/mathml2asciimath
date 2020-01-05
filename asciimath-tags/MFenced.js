@@ -6,6 +6,7 @@ module.exports = class MFenced extends BaseTag {
     super(tag);
     this.open = this.getFence(this.tag.attributes.open, '(');
     this.close = this.getFence(this.tag.attributes.close, ')');
+    //TODO: separators
   }
 
   toAsciimath() {
