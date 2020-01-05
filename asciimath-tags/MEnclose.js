@@ -16,6 +16,8 @@ module.exports = class MEnclose extends BaseTag {
         return `|ul(bar(${this.mapChildrenToAsciimath().join('')}))|`;
       case 'roundedbox':
         return `(ul(bar(${this.mapChildrenToAsciimath().join('')})))`;
+      case 'circle':
+        return `(ul(bar(${this.mapChildrenToAsciimath().join('')})))`;
       default:
         return this.mapChildrenToAsciimath().join('');
     }

@@ -443,3 +443,24 @@ describe('given math string with menclose tag with notation attribute equals to 
     expect(result).toMatch('(ul(bar(a+2)))');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'circle\'', () => {
+  test('parse menclose tag wrapping its content in ( followed bar and ul commands followed by )', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='circle'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('(ul(bar(a+2)))');
+  });
+});
