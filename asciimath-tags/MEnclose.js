@@ -14,7 +14,8 @@ module.exports = class MEnclose extends BaseTag {
       actuarial: `bar(${childrenAsciimath})|`,
       box: `|ul(bar(${childrenAsciimath}))|`,
       roundedbox: `(ul(bar(${childrenAsciimath})))`,
-      circle: `(ul(bar(${childrenAsciimath})))`
+      circle: `(ul(bar(${childrenAsciimath})))`,
+      left: `|${childrenAsciimath}`,
     }[this.notation] || childrenAsciimath;
   }
 }
