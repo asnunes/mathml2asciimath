@@ -338,3 +338,24 @@ describe('given math string with maction tag', () => {
     expect(result).toMatch('a+2; b-3');
   });
 });
+
+describe('given math string with menclose tag without notation attribute', () => {
+  test('parse menclose tag just joining its content', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('a+2');
+  });
+});
