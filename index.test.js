@@ -632,3 +632,24 @@ describe('given math string with menclose tag with notation attribute equals to 
     expect(result).toMatch('cancel(a+2)');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'madruwb\'', () => {
+  test('parse menclose placing content as argument of ul command followed by |', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='madruwb'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('ul(a+2)|');
+  });
+});
