@@ -12,6 +12,8 @@ module.exports = class MEnclose extends BaseTag {
         return `)bar(${this.mapChildrenToAsciimath().join('')})`;
       case 'actuarial':
         return `bar(${this.mapChildrenToAsciimath().join('')})|`;
+      case 'box':
+        return `|ul(bar(${this.mapChildrenToAsciimath().join('')}))|`;
       default:
         return this.mapChildrenToAsciimath().join('');
     }

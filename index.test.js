@@ -401,3 +401,24 @@ describe('given math string with menclose tag with notation attribute equals to 
     expect(result).toMatch('bar(a+2)|');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'box\'', () => {
+  test('parse menclose tag wrapping its content in | followed bar and ul commands followed by another |', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='box'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('|ul(bar(a+2))|');
+  });
+});
