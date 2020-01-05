@@ -24,6 +24,7 @@ module.exports = class MEnclose extends BaseTag {
       verticalstrike: `cancel(${childrenAsciimath})`,
       horizontalstrike: `cancel(${childrenAsciimath})`,
       madruwb: `ul(${childrenAsciimath})|`,
+      updiagonalarrow: `cancel(${childrenAsciimath})|`,
     }[this.notation] || childrenAsciimath;
   }
 }
