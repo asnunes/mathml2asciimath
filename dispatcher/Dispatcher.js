@@ -5,6 +5,7 @@ const MO = require('../asciimath-tags/MO');
 const MRow = require('../asciimath-tags/MRow');
 const MSup = require('../asciimath-tags/MSup');
 const MSqrt = require('../asciimath-tags/MSqrt');
+const MRoot = require('../asciimath-tags/MRoot');
 const MFenced = require('../asciimath-tags/MFenced');
 const MFrac = require('../asciimath-tags/MFrac');
 
@@ -26,6 +27,8 @@ module.exports = class Dispatcher {
         return new MSup({ value, attributes, children });
       case 'msqrt':
         return new MSqrt({ value, attributes, children });
+      case 'mroot':
+        return new MRoot({ value, attributes, children });
       case 'mfrac':
         return new MFrac({ value, attributes, children });
       case 'mfenced':

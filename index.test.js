@@ -14,13 +14,13 @@ describe('given math string with mi tag', () => {
 describe('given math string with mo tag with simple operator', () => {
   test('parse mo just passing it operator as string', () => {
     const matml = `
-    <root>
-      <math>
+      <root>
+        <math>
           <mo>+</mo>
-      </math>
-    </root>
-  `;
-  
+        </math>
+      </root>
+    `;
+
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
     
@@ -234,10 +234,9 @@ describe('given math string with mfrac containing multiple char contents' , () =
         </math>
       </root>
     `;
-  
+
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
-    
     expect(result).toMatch('(a+2)/(b-3)');
   });
 });
@@ -267,7 +266,26 @@ describe('given math string with mfrac containing two contents with bevelled att
   
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
-    
     expect(result).toMatch('1//(x^3+x/3)');
+  });
+});
+
+
+describe('given math string with mroot containing two content' , () => {
+  test('parse mroot tag wrapping its contents inside root(x)(y), where x is the second mroot\'s child and y is the first one', () => {
+    const matml = `
+      <root>
+        <math>
+          <mroot>
+            <mi>z</mi>
+            <mn>3</mn>
+          </mroot> 
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    expect(result).toMatch('root(3)(z)');
   });
 });
