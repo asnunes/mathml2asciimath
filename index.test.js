@@ -306,7 +306,35 @@ describe('given math string with mpadded tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
-    
+
     expect(result).toMatch('2+2');
+  });
+});
+
+describe('given math string with maction tag', () => {
+  test('parse maction just joining its content separating them by ;', () => {
+    const matml = `
+      <root>
+        <math>
+          <maction>
+            <mrow>
+              <mi>a</mi>
+              <mo>+</mo>
+              <mi>2</mi>
+            </mrow>
+            <mrow>
+              <mi>b</mi>
+              <mo>-</mo>
+              <mi>3</mi>
+            </mrow>
+          </maction>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('a+2; b-3');
   });
 });
