@@ -10,6 +10,8 @@ module.exports = class MEnclose extends BaseTag {
     switch (this.notation) {
       case 'longdiv':
         return `)bar(${this.mapChildrenToAsciimath().join('')})`;
+      case 'actuarial':
+        return `bar(${this.mapChildrenToAsciimath().join('')})|`;
       default:
         return this.mapChildrenToAsciimath().join('');
     }

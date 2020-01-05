@@ -380,3 +380,24 @@ describe('given math string with menclose tag with notation attribute equals to 
     expect(result).toMatch(')bar(a+2)');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'actuarial\'', () => {
+  test('parse menclose tag just wrapping its content bar command followed by |', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='actuarial'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('bar(a+2)|');
+  });
+});
