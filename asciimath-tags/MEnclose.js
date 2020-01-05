@@ -3,7 +3,7 @@ const BaseTag = require('./BaseTag');
 module.exports = class MEnclose extends BaseTag {
   constructor(tag) {
     super(tag);
-    this.notation = this.tag.notation;
+    this.notation = this.tag.attributes.notation;
   }
 
   toAsciimath() {

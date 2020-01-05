@@ -359,3 +359,24 @@ describe('given math string with menclose tag without notation attribute', () =>
     expect(result).toMatch('a+2');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'longdiv\'', () => {
+  test('parse menclose tag just wrapping its content in a ) followed by bar command', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='longdiv'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch(')bar(a+2)');
+  });
+});
