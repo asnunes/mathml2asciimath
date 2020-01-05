@@ -23,7 +23,7 @@ describe('given math string with mo tag with simple operator', () => {
 
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
-    
+
     expect(result).toMatch('+');
   });
 });
@@ -287,5 +287,26 @@ describe('given math string with mroot containing two content' , () => {
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
     expect(result).toMatch('root(3)(z)');
+  });
+});
+
+describe('given math string with mpadded tag', () => {
+  test('parse mpadded just wrapping its content', () => {
+    const matml = `
+      <root>
+        <math>
+          <mpadded>
+            <mn>2</mn>
+            <mo>+</mo>
+            <mn>2</mn>
+          </mpadded>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('2+2');
   });
 });

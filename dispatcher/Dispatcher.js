@@ -3,6 +3,7 @@ const MI = require('../asciimath-tags/MI');
 const MN = require('../asciimath-tags/MN');
 const MO = require('../asciimath-tags/MO');
 const MRow = require('../asciimath-tags/MRow');
+const MPadded = require('../asciimath-tags/MPadded');
 const MSup = require('../asciimath-tags/MSup');
 const MSqrt = require('../asciimath-tags/MSqrt');
 const MRoot = require('../asciimath-tags/MRoot');
@@ -23,6 +24,8 @@ module.exports = class Dispatcher {
         return new Math({ value, attributes, children });
       case 'mrow':
         return new MRow({ value, attributes, children });
+      case 'mpadded':
+        return new MPadded({ value, attributes, children });
       case 'msup':
         return new MSup({ value, attributes, children });
       case 'msqrt':
