@@ -215,7 +215,7 @@ describe('given math string with mfrac containing single char contents' , () => 
 });
 
 describe('given math string with mfrac containing multiple char contents' , () => {
-  test('parse mfrac joining its two char contents with / wrapping them into parentheses', () => {
+  test('parse mfrac joining its two contents with / wrapping them into parentheses', () => {
     const matml = `
       <root>
         <math>
@@ -239,5 +239,35 @@ describe('given math string with mfrac containing multiple char contents' , () =
     console.log(result);
     
     expect(result).toMatch('(a+2)/(b-3)');
+  });
+});
+
+describe('given math string with mfrac containing two contents with bevelled attribute marked as true' , () => {
+  test('parse mfrac joining its two char contents with //', () => {
+    const matml = `
+      <root>
+        <math>
+          <mfrac bevelled="true">
+            <mn>1</mn>
+            <mrow>
+              <msup>
+                <mi>x</mi>
+                <mn>3</mn>
+              </msup>
+              <mo>+</mo>
+              <mfrac>
+                <mi>x</mi>
+                <mn>3</mn>
+              </mfrac>
+            </mrow>
+          </mfrac>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('1//(x^3+x/3)');
   });
 });
