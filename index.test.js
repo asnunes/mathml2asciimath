@@ -674,3 +674,25 @@ describe('given math string with menclose tag with notation attribute equals to 
     expect(result).toMatch('cancel(a+2)|');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'phasorangle\'', () => {
+  test('parse menclose placing \/ followed by content as argument of ul command', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='phasorangle'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('\/ul(a+2)');
+  });
+});
+
