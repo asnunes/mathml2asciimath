@@ -6,17 +6,28 @@ module.exports = class MFenced extends BaseTag {
     super(tag);
     this.open = this.getFence(this.tag.attributes.open, '(');
     this.close = this.getFence(this.tag.attributes.close, ')');
-    //TODO: separators
+    this.separators = this.tag.attributes.separators;
   }
 
   toAsciimath() {
-    const asciimathChildren = this.mapChildrenToAsciimath().join(',');
-    return `${this.open}${asciimathChildren}${this.close}`;
+    const asciimathChildren = this.mapChildrenToAsciimath().reduce((acc, val, index) => {
+      return acc + val + this.getSeparatorFor(index);
+    }, '');
+
+    return this.open + asciimathChildren + this.close;
   }
 
   getFence(attr, defaultValue) {
     if (!attr) return defaultValue;
     if (attr === 'null') return ':}'
     return trim(attr);
+  }
+
+  getSeparatorFor(index) {
+    if (index + 1 === this.tag.children.length || this.tag.children.length === 1) return '';
+    if (!this.separators) return ',';
+    
+    const arrOfSeparators = this.separators.split('');
+    return arrOfSeparators[index] || arrOfSeparators[arrOfSeparators.length - 1];
   }
 }

@@ -156,6 +156,71 @@ describe('given math string with mfenced with more than one content and no attr'
   });
 });
 
+describe('given math string with mfenced with three contents with separator attribute \';;;\'', () => {
+  test('parse mfenced wrapping it content inside parentheses and joining using \';\'', () => {
+    const matml = `
+      <root>
+        <math>
+        <mfenced separators=';;;'>
+          <mn>3</mn>
+          <mn>2</mn>
+          <mn>1</mn>
+        </mfenced>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('(3;2;1)');
+  });
+});
+
+describe('given math string with mfenced with four contents with separator attribute \';.\'', () => {
+  test('parse mfenced wrapping it content inside parentheses and joining using \';\' for the first, \'.\' for the second on', () => {
+    const matml = `
+      <root>
+        <math>
+        <mfenced separators=';.'>
+          <mn>3</mn>
+          <mn>2</mn>
+          <mn>1</mn>
+          <mn>7</mn>
+        </mfenced>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('(3;2.1.7)');
+  });
+});
+
+describe('given math string with mfenced with four contents with separator attribute as empty string', () => {
+  test('parse mfenced wrapping it content inside parentheses and joining using commas', () => {
+    const matml = `
+      <root>
+        <math>
+        <mfenced separators=''>
+          <mn>3</mn>
+          <mn>2</mn>
+          <mn>1</mn>
+          <mn>7</mn>
+        </mfenced>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('(3,2,1,7)');
+  });
+});
+
 describe('given math string with mfenced with single content, open and close attrs settled as {', () => {
   test('parse mfenced wrapping it content inside parentheses', () => {
     const matml = `
@@ -167,7 +232,7 @@ describe('given math string with mfenced with single content, open and close att
         </math>
       </root>
     `;
-  
+
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
     
