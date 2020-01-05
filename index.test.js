@@ -193,3 +193,51 @@ describe('given math string with mfenced with single content, open attr settled 
     expect(result).toMatch('{3:}');
   });
 });
+
+describe('given math string with mfrac containing single char contents' , () => {
+  test('parse mfrac joining its two char contents with /', () => {
+    const matml = `
+      <root>
+        <math>
+          <mfrac>
+            <mi>x</mi>
+            <mn>3</mn>
+          </mfrac>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('x/3');
+  });
+});
+
+describe('given math string with mfrac containing multiple char contents' , () => {
+  test('parse mfrac joining its two char contents with / wrapping them into parentheses', () => {
+    const matml = `
+      <root>
+        <math>
+          <mfrac>
+            <mrow>
+              <mi>a</mi>
+              <mo>+</mo>
+              <mi>2</mi>
+            </mrow>
+            <mrow>
+              <mi>b</mi>
+              <mo>-</mo>
+              <mi>3</mi>
+            </mrow>
+          </mfrac>
+        </math>
+      </root>
+    `;
+  
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+    
+    expect(result).toMatch('(a+2)/(b-3)');
+  });
+});
