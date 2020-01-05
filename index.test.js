@@ -569,3 +569,24 @@ describe('given math string with menclose tag with notation attribute equals to 
     expect(result).toMatch('cancel(a+2)');
   });
 });
+
+describe('given math string with menclose tag with notation attribute equals to \'downdiagonalstrike\'', () => {
+  test('parse menclose placing content as argument of cancel command', () => {
+    const matml = `
+      <root>
+        <math>
+          <menclose notation='downdiagonalstrike'>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>2</mi>
+          </menclose>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toMatch('cancel(a+2)');
+  });
+});
