@@ -810,3 +810,27 @@ describe('given math string with mglyph tag', () => {
   });
 });
 
+describe('given math string with mover tag where its first child is a mrow and second is mo containing ⏞', () => {
+  test('ignore it', () => {
+    const matml = `
+      <root>
+        <mover accent="true">
+          <mrow>
+            <mi> x </mi>
+            <mo> + </mo>
+            <mi> y </mi>
+            <mo> + </mo>
+            <mi> z </mi>
+          </mrow>
+          <mo>⏞</mo>
+        </mover>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('overbrace(x+y+z)');
+  });
+});
+
