@@ -7526,7 +7526,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x219A;",
     "glyph": "↚",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards arrow with stroke",
     "form": "infix",
     "priority": 270,
@@ -7537,7 +7537,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x219B;",
     "glyph": "↛",
-    "asciimath": "",
+    "asciimath": "harr",
     "name": "rightwards arrow with stroke",
     "form": "infix",
     "priority": 270,
@@ -8230,7 +8230,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21DA;",
     "glyph": "⇚",
-    "asciimath": "",
+    "asciimath": "lArr",
     "name": "leftwards triple arrow",
     "form": "infix",
     "priority": 270,
@@ -8241,7 +8241,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21DB;",
     "glyph": "⇛",
-    "asciimath": "",
+    "asciimath": "rArr",
     "name": "rightwards triple arrow",
     "form": "infix",
     "priority": 270,
@@ -8252,7 +8252,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21DC;",
     "glyph": "⇜",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards squiggle arrow",
     "form": "infix",
     "priority": 270,
@@ -8263,7 +8263,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21DD;",
     "glyph": "⇝",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards squiggle arrow",
     "form": "infix",
     "priority": 270,
@@ -8516,7 +8516,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21F4;",
     "glyph": "⇴",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "right arrow with small circle",
     "form": "infix",
     "priority": 270,
@@ -8538,7 +8538,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21F6;",
     "glyph": "⇶",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "three rightwards arrows",
     "form": "infix",
     "priority": 270,
@@ -8549,7 +8549,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21F7;",
     "glyph": "⇷",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards arrow with vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -8560,7 +8560,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21F8;",
     "glyph": "⇸",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards arrow with vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -8571,7 +8571,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21F9;",
     "glyph": "⇹",
-    "asciimath": "",
+    "asciimath": "harr",
     "name": "left right arrow with vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -8582,7 +8582,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21FA;",
     "glyph": "⇺",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards arrow with double vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -8593,7 +8593,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21FB;",
     "glyph": "⇻",
-    "asciimath": "",
+    "asciimath": "harr",
     "name": "rightwards arrow with double vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -8604,7 +8604,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x21FC;",
     "glyph": "⇼",
-    "asciimath": "",
+    "asciimath": "harr",
     "name": "left right arrow with double vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -8824,7 +8824,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2902;",
     "glyph": "⤂",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards double arrow with vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -8835,7 +8835,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2903;",
     "glyph": "⤃",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards double arrow with vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -8846,7 +8846,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2904;",
     "glyph": "⤄",
-    "asciimath": "",
+    "asciimath": "harr",
     "name": "left right double arrow with vertical stroke",
     "form": "infix",
     "priority": 270,
@@ -9077,7 +9077,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2919;",
     "glyph": "⤙",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards arrow-tail",
     "form": "infix",
     "priority": 270,
@@ -9088,7 +9088,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x291A;",
     "glyph": "⤚",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards arrow-tail",
     "form": "infix",
     "priority": 270,
@@ -9099,7 +9099,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x291B;",
     "glyph": "⤛",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards double arrow-tail",
     "form": "infix",
     "priority": 270,
@@ -9110,7 +9110,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x291C;",
     "glyph": "⤜",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards double arrow-tail",
     "form": "infix",
     "priority": 270,
@@ -9121,7 +9121,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x291D;",
     "glyph": "⤝",
-    "asciimath": "",
+    "asciimath": "*larr",
     "name": "leftwards arrow to black diamond",
     "form": "infix",
     "priority": 270,
@@ -9132,7 +9132,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x291E;",
     "glyph": "⤞",
-    "asciimath": "",
+    "asciimath": "rarr*",
     "name": "rightwards arrow to black diamond",
     "form": "infix",
     "priority": 270,
@@ -9143,7 +9143,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x291F;",
     "glyph": "⤟",
-    "asciimath": "",
+    "asciimath": "*larr",
     "name": "leftwards arrow from bar to black diamond",
     "form": "infix",
     "priority": 270,
@@ -9154,7 +9154,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2920;",
     "glyph": "⤠",
-    "asciimath": "",
+    "asciimath": "rarr*",
     "name": "rightwards arrow from bar to black diamond",
     "form": "infix",
     "priority": 270,
@@ -9363,7 +9363,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2933;",
     "glyph": "⤳",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "wave arrow pointing directly right",
     "form": "infix",
     "priority": 270,
@@ -9462,7 +9462,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x293C;",
     "glyph": "⤼",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "top arc clockwise arrow with minus",
     "form": "infix",
     "priority": 270,
@@ -9473,7 +9473,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x293D;",
     "glyph": "⤽",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "top arc anticlockwise arrow with plus",
     "form": "infix",
     "priority": 270,
@@ -9561,7 +9561,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2945;",
     "glyph": "⥅",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "rightwards arrow with plus below",
     "form": "infix",
     "priority": 270,
@@ -9572,7 +9572,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2946;",
     "glyph": "⥆",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards arrow with plus below",
     "form": "infix",
     "priority": 270,
@@ -9583,7 +9583,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2947;",
     "glyph": "⥇",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards arrow through x",
     "form": "infix",
     "priority": 270,
@@ -9594,7 +9594,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2948;",
     "glyph": "⥈",
-    "asciimath": "",
+    "asciimath": "harr",
     "name": "left right arrow through small circle",
     "form": "infix",
     "priority": 270,
@@ -9704,7 +9704,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2952;",
     "glyph": "⥒",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards harpoon with barb up to bar",
     "form": "infix",
     "priority": 270,
@@ -9715,7 +9715,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2953;",
     "glyph": "⥓",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards harpoon with barb up to bar",
     "form": "infix",
     "priority": 270,
@@ -9792,7 +9792,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x295A;",
     "glyph": "⥚",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards harpoon with barb up from bar",
     "form": "infix",
     "priority": 270,
@@ -9803,7 +9803,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x295B;",
     "glyph": "⥛",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards harpoon with barb up from bar",
     "form": "infix",
     "priority": 270,
@@ -9847,7 +9847,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x295F;",
     "glyph": "⥟",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards harpoon with barb down from bar",
     "form": "infix",
     "priority": 270,
@@ -10045,7 +10045,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2971;",
     "glyph": "⥱",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "equals sign above rightwards arrow",
     "form": "infix",
     "priority": 270,
@@ -10056,7 +10056,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2972;",
     "glyph": "⥲",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "tilde operator above rightwards arrow",
     "form": "infix",
     "priority": 270,
@@ -10067,7 +10067,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2973;",
     "glyph": "⥳",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards arrow above tilde operator",
     "form": "infix",
     "priority": 270,
@@ -10078,7 +10078,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2974;",
     "glyph": "⥴",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards arrow above tilde operator",
     "form": "infix",
     "priority": 270,
@@ -10089,7 +10089,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2975;",
     "glyph": "⥵",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "rightwards arrow above almost equal to",
     "form": "infix",
     "priority": 270,
@@ -10100,7 +10100,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2976;",
     "glyph": "⥶",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "less-than above leftwards arrow",
     "form": "infix",
     "priority": 270,
@@ -10111,7 +10111,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2977;",
     "glyph": "⥷",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards arrow through less-than",
     "form": "infix",
     "priority": 270,
@@ -10122,7 +10122,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2978;",
     "glyph": "⥸",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "greater-than above rightwards arrow",
     "form": "infix",
     "priority": 270,
@@ -10133,7 +10133,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x2979;",
     "glyph": "⥹",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "subset above rightwards arrow",
     "form": "infix",
     "priority": 270,
@@ -10144,7 +10144,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x297A;",
     "glyph": "⥺",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "leftwards arrow through subset",
     "form": "infix",
     "priority": 270,
@@ -10155,7 +10155,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x297B;",
     "glyph": "⥻",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "superset above leftwards arrow",
     "form": "infix",
     "priority": 270,
@@ -10166,7 +10166,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x297C;",
     "glyph": "⥼",
-    "asciimath": "",
+    "asciimath": "larr",
     "name": "left fish tail",
     "form": "infix",
     "priority": 270,
@@ -10177,7 +10177,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x297D;",
     "glyph": "⥽",
-    "asciimath": "",
+    "asciimath": "rarr",
     "name": "right fish tail",
     "form": "infix",
     "priority": 270,
@@ -11596,7 +11596,7 @@ module.exports = mathOperators = [
   {
     "character": "^",
     "glyph": "^",
-    "asciimath": "",
+    "asciimath": "^/",
     "name": "circumflex accent",
     "form": "postfix",
     "priority": 880,
@@ -11881,8 +11881,8 @@ module.exports = mathOperators = [
   },
   {
     "character": "&#x302;",
-    "glyph": "̂",
-    "asciimath": "̂",
+    "glyph": "^",
+    "asciimath": "^",
     "name": "combining circumflex accent",
     "form": "postfix",
     "priority": 880,
@@ -12058,7 +12058,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23B4;",
     "glyph": "⎴",
-    "asciimath": "",
+    "asciimath": "overbrace",
     "name": "top square bracket",
     "form": "postfix",
     "priority": 880,
@@ -12069,7 +12069,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23B5;",
     "glyph": "⎵",
-    "asciimath": "",
+    "asciimath": "underbrace",
     "name": "bottom square bracket",
     "form": "postfix",
     "priority": 880,
@@ -12080,7 +12080,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23DC;",
     "glyph": "⏜",
-    "asciimath": "frown",
+    "asciimath": "underbrace",
     "name": "top parenthesis",
     "form": "postfix",
     "priority": 880,
@@ -12091,7 +12091,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23DD;",
     "glyph": "⏝",
-    "asciimath": "",
+    "asciimath": "overbrace",
     "name": "bottom parenthesis",
     "form": "postfix",
     "priority": 880,
@@ -12102,7 +12102,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23DE;",
     "glyph": "⏞",
-    "asciimath": "obrace",
+    "asciimath": "overbrace",
     "name": "top curly bracket",
     "form": "postfix",
     "priority": 880,
@@ -12113,7 +12113,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23DF;",
     "glyph": "⏟",
-    "asciimath": "ubrace",
+    "asciimath": "underbrace",
     "name": "bottom curly bracket",
     "form": "postfix",
     "priority": 880,
@@ -12124,7 +12124,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23E0;",
     "glyph": "⏠",
-    "asciimath": "obrace",
+    "asciimath": "ubrace",
     "name": "top tortoise shell bracket",
     "form": "postfix",
     "priority": 880,
@@ -12135,7 +12135,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23E1;",
     "glyph": "⏡",
-    "asciimath": "ubrace",
+    "asciimath": "obrace",
     "name": "bottom tortoise shell bracket",
     "form": "postfix",
     "priority": 880,
