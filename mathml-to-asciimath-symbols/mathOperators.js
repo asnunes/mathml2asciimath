@@ -12058,7 +12058,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23B4;",
     "glyph": "⎴",
-    "asciimath": "overbrace",
+    "asciimath": "obrace",
     "name": "top square bracket",
     "form": "postfix",
     "priority": 880,
@@ -12069,7 +12069,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23B5;",
     "glyph": "⎵",
-    "asciimath": "underbrace",
+    "asciimath": "ubrace",
     "name": "bottom square bracket",
     "form": "postfix",
     "priority": 880,
@@ -12080,7 +12080,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23DC;",
     "glyph": "⏜",
-    "asciimath": "underbrace",
+    "asciimath": "ubrace",
     "name": "top parenthesis",
     "form": "postfix",
     "priority": 880,
@@ -12091,7 +12091,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23DD;",
     "glyph": "⏝",
-    "asciimath": "overbrace",
+    "asciimath": "obrace",
     "name": "bottom parenthesis",
     "form": "postfix",
     "priority": 880,
@@ -12102,7 +12102,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23DE;",
     "glyph": "⏞",
-    "asciimath": "overbrace",
+    "asciimath": "obrace",
     "name": "top curly bracket",
     "form": "postfix",
     "priority": 880,
@@ -12113,7 +12113,7 @@ module.exports = mathOperators = [
   {
     "character": "&#x23DF;",
     "glyph": "⏟",
-    "asciimath": "underbrace",
+    "asciimath": "ubrace",
     "name": "bottom curly bracket",
     "form": "postfix",
     "priority": 880,

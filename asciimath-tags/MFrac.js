@@ -11,7 +11,7 @@ module.exports = class MFrac extends BaseTag {
     const { children } = this.tag;
 
     if (children.length !== 2) {
-      new Error('Wrong number of children for mfrac tag. It should have exactly 2.');
+      throw new Error('Wrong number of children for mfrac tag. It should have exactly 2.');
     }
 
     const num = children[0];

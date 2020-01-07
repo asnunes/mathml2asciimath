@@ -14,7 +14,7 @@ describe('given math string with mi tag', () => {
 describe('given math string with mi tag with space on it', () => {
   test('should trim empty space', () => {
     const matml = '<root><math><mi> a </mi></math></root>';
-    
+
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
 
@@ -811,26 +811,106 @@ describe('given math string with mglyph tag', () => {
 });
 
 describe('given math string with mover tag where its first child is a mrow and second is mo containing ⏞', () => {
-  test('ignore it', () => {
+  test('parce wrapping it content inside obrace command', () => {
     const matml = `
       <root>
-        <mover accent="true">
-          <mrow>
-            <mi> x </mi>
-            <mo> + </mo>
-            <mi> y </mi>
-            <mo> + </mo>
-            <mi> z </mi>
-          </mrow>
-          <mo>⏞</mo>
-        </mover>
+        <math>
+          <mover accent="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>⏞</mo>
+          </mover>
+        </math>
       </root>
     `;
 
     const result = new Mathml2asciimath(matml).convert();
     console.log(result);
 
-    expect(result).toBe('overbrace(x+y+z)');
+    expect(result).toBe('obrace(x+y+z)');
+  });
+});
+
+describe('given math string with mover tag where its first child is a mrow and second is mo containing &#x23DE;', () => {
+  test('parce wrapping it content inside obrace command', () => {
+    const matml = `
+      <root>
+        <math>
+          <mover accent="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>&#x23DE;</mo>
+          </mover>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('obrace(x+y+z)');
+  });
+});
+
+describe('given math string with mover tag where its first child is a mrow and second is mo containing ⥨, an accent without ascii command', () => {
+  test('parce wrapping it content inside overset command', () => {
+    const matml = `
+      <root>
+        <math>
+          <mover accent="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>⥨</mo>
+          </mover>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('overset(harr)(x+y+z)');
+  });
+});
+
+describe('given math string with mover tag where its first child is a mrow and second is mo containing &#x2968;, an accent without ascii command', () => {
+  test('parce wrapping it content inside overset command', () => {
+    const matml = `
+      <root>
+        <math>
+          <mover accent="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>&#x2968;</mo>
+          </mover>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('overset(harr)(x+y+z)');
   });
 });
 
