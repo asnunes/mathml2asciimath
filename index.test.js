@@ -939,3 +939,22 @@ describe('given math string with mphantom tag', () => {
   });
 });
 
+describe('given math string with msub tag', () => {
+  it('join its children using _', () => {
+    const matml = `
+      <root>
+        <math>
+          <msub>
+            <mi>X</mi>
+            <mn>1</mn>
+          </msub>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('X_1');
+  });
+});
