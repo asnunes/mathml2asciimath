@@ -914,3 +914,28 @@ describe('given math string with mover tag where its first child is a mrow and s
   });
 });
 
+describe('given math string with mphantom tag', () => {
+  it('replaces every ascii character inside tag to empty space', () => {
+    const matml = `
+      <root>
+        <math>
+          <mrow>
+            <mi> x </mi>
+            <mo> + </mo>
+            <mphantom>
+              <mi> y </mi>
+              <mo> + </mo>
+            </mphantom>
+            <mi> z </mi>
+          </mrow>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('x+  z');
+  });
+});
+
