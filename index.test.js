@@ -958,3 +958,24 @@ describe('given math string with msub tag', () => {
     expect(result).toBe('X_1');
   });
 });
+
+describe('given math string with msubsup tag', () => {
+  it('join its children using _ and ^', () => {
+    const matml = `
+      <root>
+        <math>
+          <msubsup>
+            <mo> &#x222B; </mo>
+            <mn> 0 </mn>
+            <mn> 1 </mn>
+          </msubsup>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('int_0^1');
+  });
+});

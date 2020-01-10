@@ -1,3 +1,4 @@
+const trim = require('trim');
 const BaseTag = require('./BaseTag');
 
 module.exports = class MO extends BaseTag {
@@ -9,6 +10,6 @@ module.exports = class MO extends BaseTag {
     const { children, value } = this.tag;
     if (children.length > 0) throw new Error('MI tag should not have children');
 
-    return value;
+    return trim(value);
   }
 }
