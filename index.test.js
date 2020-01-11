@@ -1011,3 +1011,20 @@ describe('given math string with mtable, mtr and mtd tag', () => {
     expect(result).toBe('A=[(x, y), (z, w)]');
   });
 });
+
+describe('given math string with mtext', () => {
+  it('wrap its content inside text command', () => {
+    const matml = `
+    <root>
+      <math xmlns = "http://www.w3.org/1998/Math/MathML">
+        <mtext> Theorem of Pythagoras </mtext>
+      </math>
+    </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('text( Theorem of Pythagoras )');
+  });
+});
