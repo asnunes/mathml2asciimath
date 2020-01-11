@@ -1028,3 +1028,107 @@ describe('given math string with mtext', () => {
     expect(result).toBe('text( Theorem of Pythagoras )');
   });
 });
+
+describe('given math string with munder tag where its first child is a mrow and second is mo containing ⏞', () => {
+  it('wrap its content inside ubrace command', () => {
+    const matml = `
+    <root>
+      <math xmlns = "http://www.w3.org/1998/Math/MathML">
+        <munder>
+          <mrow>
+            <mi> x </mi>
+            <mo> + </mo>
+            <mi> y </mi>
+            <mo> + </mo>
+            <mi> z </mi>
+          </mrow>
+          <mo>⏟</mo>
+        </munder>
+      </math>
+    </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('ubrace(x+y+z)');
+  });
+});
+
+describe('given math string with munder tag where its first child is a mrow and second is mo containing &#x23DE;', () => {
+  test('parce wrapping it content inside ubrace command', () => {
+    const matml = `
+      <root>
+        <math>
+          <munder accent="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>&#x23DF;</mo>
+          </munder>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('ubrace(x+y+z)');
+  });
+});
+
+describe('given math string with munder tag where its first child is a mrow and second is mo containing ⥨, an accent without ascii command', () => {
+  test('parce wrapping it content inside underset command', () => {
+    const matml = `
+      <root>
+        <math>
+          <munder accent="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>⥨</mo>
+          </munder>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('underset(harr)(x+y+z)');
+  });
+});
+
+describe('given math string with munder tag where its first child is a mrow and second is mo containing &#x2968;, an accent without ascii command', () => {
+  test('parce wrapping it content inside underset command', () => {
+    const matml = `
+      <root>
+        <math>
+          <munder accent="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>&#x2968;</mo>
+          </munder>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('underset(harr)(x+y+z)');
+  });
+});
