@@ -979,3 +979,35 @@ describe('given math string with msubsup tag', () => {
     expect(result).toBe('int_0^1');
   });
 });
+
+describe('given math string with mtable, mtr and mtd tag', () => {
+  it('returns a matrix representation in asciimath', () => {
+    const matml = `
+    <root>
+      <math xmlns = "http://www.w3.org/1998/Math/MathML">
+        <mrow>
+          <mi>A</mi>
+          <mo>=</mo>
+          <mfenced open = "[" close="]">
+            <mtable>
+              <mtr>
+                <mtd><mi>x</mi></mtd>
+                <mtd><mi>y</mi></mtd>
+              </mtr>
+              <mtr>
+                <mtd><mi>z</mi></mtd>
+                <mtd><mi>w</mi></mtd>
+              </mtr>
+            </mtable>
+          </mfenced>
+        </mrow>
+      </math>
+    </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('A=[(x, y), (z, w)]');
+  });
+});
