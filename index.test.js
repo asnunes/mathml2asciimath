@@ -1132,3 +1132,24 @@ describe('given math string with munder tag where its first child is a mrow and 
     expect(result).toBe('underset(harr)(x+y+z)');
   });
 });
+
+describe('given math string with munderover tag with three contents', () => {
+  test('wrap it inside underset and overset commands', () => {
+    const matml = `
+      <root>
+        <math>
+          <munderover>
+            <mo> &#x222B;</mo>
+            <mn> 0 </mn>
+            <mi> &#x221E;</mi>
+          </munderover>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('underset(0)(overset(oo)(int))');
+  });
+});
