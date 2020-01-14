@@ -5,9 +5,18 @@ describe('given math string with mi tag', () => {
     const matml = '<root><math><mi>a</mi></math></root>';
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('a');
+  });
+});
+
+describe('given math tag outside any other tag', () => {
+  test('parse iner math', () => {
+    const matml = '<math><mi>b</mi></math>';
+  
+    const result = new Mathml2asciimath(matml).convert();
+
+    expect(result).toMatch('b');
   });
 });
 
@@ -16,7 +25,6 @@ describe('given math string with mi tag with space on it', () => {
     const matml = '<root><math><mi> a </mi></math></root>';
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('a');
   });
@@ -33,7 +41,6 @@ describe('given math string with mo tag with simple operator', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('+');
   });
@@ -54,7 +61,6 @@ describe('given math string with mrow tag', () => {
   `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     
     expect(result).toMatch('2+2');
   });
@@ -73,7 +79,6 @@ describe('given math string with msqrt tag', () => {
   `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     
     expect(result).toMatch('sqrt(2)');
   });
@@ -93,7 +98,6 @@ describe('given math string with msup tag containing single char contents', () =
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     
     expect(result).toMatch('a^2');
   });
@@ -121,7 +125,6 @@ describe('given math string with msup tag containing multiple chars contents', (
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     
     expect(result).toMatch('(a+2)^(b-3)');
   });
@@ -140,7 +143,6 @@ describe('given math string with mfenced with single content and no attr', () =>
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     
     expect(result).toMatch('(3)');
   });
@@ -161,7 +163,6 @@ describe('given math string with mfenced with more than one content and no attr'
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     
     expect(result).toMatch('(3,2,1)');
   });
@@ -182,7 +183,6 @@ describe('given math string with mfenced with three contents with separator attr
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('(3;2;1)');
   });
@@ -204,7 +204,6 @@ describe('given math string with mfenced with four contents with separator attri
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('(3;2.1.7)');
   });
@@ -226,7 +225,6 @@ describe('given math string with mfenced with four contents with separator attri
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('(3,2,1,7)');
   });
@@ -245,7 +243,6 @@ describe('given math string with mfenced with single content, open and close att
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('{3}');
   });
@@ -264,7 +261,6 @@ describe('given math string with mfenced with single content, open attr settled 
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     
     expect(result).toMatch('{3:}');
   });
@@ -284,7 +280,6 @@ describe('given math string with mfrac containing single char contents' , () => 
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     
     expect(result).toMatch('x/3');
   });
@@ -312,7 +307,6 @@ describe('given math string with mfrac containing multiple char contents' , () =
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     expect(result).toMatch('(a+2)/(b-3)');
   });
 });
@@ -341,7 +335,6 @@ describe('given math string with mfrac containing two contents with bevelled att
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     expect(result).toMatch('1//(x^3+x/3)');
   });
 });
@@ -361,7 +354,6 @@ describe('given math string with mroot containing two content' , () => {
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
     expect(result).toMatch('root(3)(z)');
   });
 });
@@ -381,7 +373,6 @@ describe('given math string with mpadded tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('2+2');
   });
@@ -409,7 +400,6 @@ describe('given math string with maction tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('a+2; b-3');
   });
@@ -430,7 +420,6 @@ describe('given math string with menclose tag without notation attribute', () =>
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('a+2');
   });
@@ -451,7 +440,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch(')bar(a+2)');
   });
@@ -472,7 +460,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('bar(a+2)|');
   });
@@ -493,7 +480,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('|ul(bar(a+2))|');
   });
@@ -514,7 +500,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('(ul(bar(a+2)))');
   });
@@ -535,7 +520,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('(ul(bar(a+2)))');
   });
@@ -556,7 +540,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('|a+2');
   });
@@ -577,7 +560,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('a+2|');
   });
@@ -598,7 +580,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('bar(a+2)');
   });
@@ -619,7 +600,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('ul(a+2)');
   });
@@ -640,7 +620,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('cancel(a+2)');
   });
@@ -661,7 +640,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('cancel(a+2)');
   });
@@ -682,7 +660,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('cancel(a+2)');
   });
@@ -703,7 +680,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('cancel(a+2)');
   });
@@ -724,7 +700,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('ul(a+2)|');
   });
@@ -745,7 +720,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('cancel(a+2)|');
   });
@@ -766,7 +740,6 @@ describe('given math string with menclose tag with notation attribute equals to 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('\/ul(a+2)');
   });
@@ -787,7 +760,6 @@ describe('given math string with merror tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toMatch('color(red)(|ul(bar(a+2))|)');
   });
@@ -804,7 +776,6 @@ describe('given math string with mglyph tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('');
   });
@@ -830,7 +801,6 @@ describe('given math string with mover tag where its first child is a mrow and s
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('obrace(x+y+z)');
   });
@@ -856,7 +826,6 @@ describe('given math string with mover tag where its first child is a mrow and s
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('obrace(x+y+z)');
   });
@@ -882,7 +851,6 @@ describe('given math string with mover tag where its first child is a mrow and s
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('overset(harr)(x+y+z)');
   });
@@ -908,7 +876,6 @@ describe('given math string with mover tag where its first child is a mrow and s
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('overset(harr)(x+y+z)');
   });
@@ -933,7 +900,6 @@ describe('given math string with mphantom tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('x+  z');
   });
@@ -953,7 +919,6 @@ describe('given math string with msub tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('X_1');
   });
@@ -974,7 +939,6 @@ describe('given math string with msubsup tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('int_0^1');
   });
@@ -1006,7 +970,6 @@ describe('given math string with mtable, mtr and mtd tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('A=[(x, y), (z, w)]');
   });
@@ -1023,7 +986,6 @@ describe('given math string with mtext', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('text( Theorem of Pythagoras )');
   });
@@ -1049,7 +1011,6 @@ describe('given math string with munder tag where its first child is a mrow and 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('ubrace(x+y+z)');
   });
@@ -1075,7 +1036,6 @@ describe('given math string with munder tag where its first child is a mrow and 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('ubrace(x+y+z)');
   });
@@ -1101,7 +1061,6 @@ describe('given math string with munder tag where its first child is a mrow and 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('underset(harr)(x+y+z)');
   });
@@ -1127,7 +1086,6 @@ describe('given math string with munder tag where its first child is a mrow and 
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('underset(harr)(x+y+z)');
   });
@@ -1148,7 +1106,6 @@ describe('given math string with munderover tag with three contents', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('underset(0)(overset(oo)(int))');
   });
@@ -1168,7 +1125,6 @@ describe('given math string with whitespaces', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('km 95');
   });
@@ -1188,7 +1144,6 @@ describe('given math string with 2 whitespaces inside a mi tag', () => {
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    console.log(result);
 
     expect(result).toBe('km 95');
   });
