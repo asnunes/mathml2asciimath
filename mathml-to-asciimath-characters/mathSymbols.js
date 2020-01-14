@@ -469,31 +469,26 @@ module.exports = mathSymbols = [
     },
     {
       "character": "&#x2102;",
-      "glyph": "",
       "asciimath": "CC",
       "name": "complex set",
     },
     {
       "character": "&#x2115;",
-      "glyph": "",
       "asciimath": "NN",
       "name": "natural set",
     },
     {
       "character": "&#x211A;",
-      "glyph": "",
       "asciimath": "QQ",
       "name": "rational set",
     },
     {
       "character": "&#x211D;",
-      "glyph": "",
       "asciimath": "RR",
       "name": "real set",
     },
     {
       "character": "&#x2124;",
-      "glyph": "",
       "asciimath": "ZZ",
       "name": "integer set",
     },

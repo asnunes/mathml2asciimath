@@ -1153,3 +1153,43 @@ describe('given math string with munderover tag with three contents', () => {
     expect(result).toBe('underset(0)(overset(oo)(int))');
   });
 });
+
+describe('given math string with whitespaces', () => {
+  test('preserves whitespace', () => {
+    const matml = `
+      <root>
+        <math>
+          <mi>k</mi>
+          <mi>m</mi>
+          <mi> </mi>
+          <mn>95</mn>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('km 95');
+  });
+});
+
+describe('given math string with 2 whitespaces inside a mi tag', () => {
+  test('normalize whitespace', () => {
+    const matml = `
+      <root>
+        <math>
+          <mi>k</mi>
+          <mi>m</mi>
+          <mi>  </mi>
+          <mn>95</mn>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+    console.log(result);
+
+    expect(result).toBe('km 95');
+  });
+});

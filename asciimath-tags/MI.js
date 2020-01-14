@@ -11,6 +11,9 @@ module.exports = class MI extends BaseTag {
     const { children, value } = this.tag;
     if (children.length > 0) return this.mapChildrenToAsciimath().join('');
 
+    const normalizedValue = this.normalizeWhitespaces(value);
+    if (normalizedValue === ' ') return normalizedValue;
+
     const trimValue = trim(value);
     return this.getMathSymbol(trimValue) || trimValue;
   }
@@ -23,5 +26,9 @@ module.exports = class MI extends BaseTag {
   getMathSymbolBy(type, trimValue) {
     const mathSymbolInfo = mathSymbols.find(op => op[type] === trimValue);
     return mathSymbolInfo ? mathSymbolInfo['asciimath'] || mathSymbolInfo['glyph'] : null;
+  }
+
+  normalizeWhitespaces(str){
+    return str.replace(/\s+/g, ' ');
   }
 }
