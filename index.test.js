@@ -1148,3 +1148,76 @@ describe('given math string with 2 whitespaces inside a mi tag', () => {
     expect(result).toBe('km 95');
   });
 });
+
+
+describe('given math string with partial function', () => {
+  test('return partial function with { and :}', () => {
+    const matml = `
+      <root>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mi>f</mi>
+          <mfenced separators="|">
+            <mrow>
+              <mi>x</mi>
+            </mrow>
+          </mfenced>
+          <mo>=</mo>
+          <mfenced open="{" close="" separators="|">
+            <mrow>
+              <mtable>
+                <mtr>
+                  <mtd>
+                    <mrow>
+                      <maligngroup></maligngroup>
+                      <msup>
+                        <mrow>
+                          <mi>x</mi>
+                        </mrow>
+                        <mrow>
+                          <mn>2</mn>
+                        </mrow>
+                      </msup>
+                      <mo>,</mo>
+                      <mi> </mi>
+                      <mi> </mi>
+                      <malignmark></malignmark>
+                      <mi>x</mi>
+                      <mo>&lt;</mo>
+                      <mn>0</mn>
+                    </mrow>
+                  </mtd>
+                </mtr>
+                <mtr>
+                  <mtd>
+                    <mrow>
+                      <maligngroup></maligngroup>
+                      <msup>
+                        <mrow>
+                          <mi>e</mi>
+                        </mrow>
+                        <mrow>
+                          <mi>x</mi>
+                        </mrow>
+                      </msup>
+                      <mo>,</mo>
+                      <mi> </mi>
+                      <mi> </mi>
+                      <malignmark></malignmark>
+                      <mi>x</mi>
+                      <mo>≥</mo>
+                      <mn>0</mn>
+                    </mrow>
+                  </mtd>
+                </mtr>
+              </mtable>
+            </mrow>
+          </mfenced>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+
+    expect(result).toBe(`f(x)={(x^2,  x<0), (e^x,  xge0):}`);
+  });
+});

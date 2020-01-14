@@ -18,8 +18,8 @@ module.exports = class MFenced extends BaseTag {
   }
 
   getFence(attr, defaultValue) {
+    if (attr === '' || attr === 'null') return ':}'
     if (!attr) return defaultValue;
-    if (attr === 'null') return ':}'
     return trim(attr);
   }
 
