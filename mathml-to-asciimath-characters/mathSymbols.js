@@ -497,4 +497,34 @@ module.exports = mathSymbols = [
       "asciimath": "ZZ",
       "name": "integer set",
     },
-  ]
+    {
+      "character": "&#xAC;",
+      "glyph": "¬",
+      "asciimath": "not",
+      "name": "not",
+    },
+    {
+      "character": "&#x21D2;",
+      "glyph": "⇒",
+      "asciimath": "=>",
+      "name": "implies",
+    },
+    {
+      "character": "&#x21D4;",
+      "glyph": "⇔",
+      "asciimath": "<=>",
+      "name": "if and only if",
+    },
+    {
+      "character": "&#x2200;",
+      "glyph": "∀",
+      "asciimath": "AA",
+      "name": "for all",
+    },
+    {
+      "character": "&#x2203;",
+      "glyph": "∃",
+      "asciimath": "EE",
+      "name": "exists",
+    },
+];
