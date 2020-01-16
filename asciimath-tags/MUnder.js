@@ -21,7 +21,7 @@ module.exports = class MUnder extends BaseTag {
     const underscriptAscii = underscript.toAsciimath();
 
     if (this.isEspecialMathOperatorAscimath(baseAscii)) return `${baseAscii}_(${underscriptAscii})`;
-    
+
     return `${this.getOperator(underscriptAscii)}(${baseAscii})`; 
   }
 
@@ -30,6 +30,6 @@ module.exports = class MUnder extends BaseTag {
   }
 
   isEspecialMathOperatorAscimath(operatorString) {
-    return !!especialMathOperators.find(op => op['character'] === operatorString);
+    return !!especialMathOperators.find(op => op['asciimath'] === operatorString);
   }
 }

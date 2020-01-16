@@ -1,4 +1,5 @@
 const BaseTag = require('./BaseTag');
+const especialMathOperators = require('../mathml-to-asciimath-characters/mathEspecialOperators');
 
 module.exports = class MUnderover extends BaseTag {
   constructor(tag) {
@@ -20,6 +21,12 @@ module.exports = class MUnderover extends BaseTag {
     const underContentAscii = underContent.toAsciimath();
     const overContentAscii = overContent.toAsciimath();
 
+    if (this.isEspecialMathOperatorAscimath(baseAscii)) return `${baseAscii}_(${underContentAscii})^(${overContentAscii})`;
+
     return `underset(${underContentAscii})(overset(${overContentAscii})(${baseAscii}))`; 
+  }
+
+  isEspecialMathOperatorAscimath(operatorString) {
+    return !!especialMathOperators.find(op => op['asciimath'] === operatorString);
   }
 }

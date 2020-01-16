@@ -882,7 +882,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 });
 
 describe('given math string with mphantom tag', () => {
-  it('replaces every ascii character inside tag to empty space', () => {
+  it('replaces every ascii character inside tag to empty space and then normalize it', () => {
     const matml = `
       <root>
         <math>
@@ -901,7 +901,7 @@ describe('given math string with mphantom tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('x +    z');
+    expect(result).toBe('x + z');
   });
 });
 
@@ -1097,6 +1097,26 @@ describe('given math string with munderover tag with three contents', () => {
       <root>
         <math>
           <munderover>
+            <mo> A</mo>
+            <mn> 0 </mn>
+            <mi> &#x221E;</mi>
+          </munderover>
+        </math>
+      </root>
+    `;
+
+    const result = new Mathml2asciimath(matml).convert();
+
+    expect(result).toBe('underset(0)(overset(oo)(A))');
+  });
+});
+
+describe('given math string with munderover tag with three contents and especial operator', () => {
+  test('handle it as it were an subsup tag', () => {
+    const matml = `
+      <root>
+        <math>
+          <munderover>
             <mo> &#x222B;</mo>
             <mn> 0 </mn>
             <mi> &#x221E;</mi>
@@ -1107,7 +1127,7 @@ describe('given math string with munderover tag with three contents', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('underset(0)(overset(oo)(int))');
+    expect(result).toBe('int_(0)^(oo)');
   });
 });
 
@@ -1253,5 +1273,42 @@ describe('munder tag with special mi operator', () => {
     console.log(result);
 
     expect(result).toBe(`lim_(x rarr 3) x^2 = ?`);
+  });
+});
+
+describe('munder tag with special mi operator', () => {
+  test('returns as a simple sub tag', () => {
+    const mathml = `
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+      <mrow>
+        <munderover>
+          <mo stretchy="false">∑</mo>
+          <mrow>
+            <mi>n</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mrow>
+            <mi>∞</mi>
+          </mrow>
+        </munderover>
+        <mrow>
+          <msub>
+            <mrow>
+              <mi>a</mi>
+            </mrow>
+            <mrow>
+              <mi>n</mi>
+            </mrow>
+          </msub>
+        </mrow>
+      </mrow>
+    </math>
+    `;
+
+    const result = new Mathml2asciimath(mathml).convert();
+    console.log(result);
+
+    expect(result).toBe(`sum_(n = 1)^(oo) a_n`);
   });
 });

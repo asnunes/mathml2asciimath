@@ -6,6 +6,10 @@ module.exports = class Math extends BaseTag {
   }
 
   toAsciimath() {
-    return this.mapChildrenToAsciimath().join('');
+    return this.normalizeWhitespaces(this.mapChildrenToAsciimath().join(''));
+  }
+
+  normalizeWhitespaces(str){
+    return str.replace(/\s+/g, ' ');
   }
 }
