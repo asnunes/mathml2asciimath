@@ -1,5 +1,6 @@
 const BaseTag = require('./BaseTag');
 const asciimathAccents = require('../syntax/asciimathAccents');
+const especialMathOperators = require('../mathml-to-asciimath-characters/mathEspecialOperators');
 
 module.exports = class MUnder extends BaseTag {
   constructor(tag) {
@@ -16,15 +17,19 @@ module.exports = class MUnder extends BaseTag {
     const base = children[0];
     const underscript = children[1];
 
-    if (underscript.constructor.name !== 'MO') throw new Error('Second tag should be a mo tag');
-
     const baseAscii = base.toAsciimath();
     const underscriptAscii = underscript.toAsciimath();
 
+    if (this.isEspecialMathOperatorAscimath(baseAscii)) return `${baseAscii}_(${underscriptAscii})`;
+    
     return `${this.getOperator(underscriptAscii)}(${baseAscii})`; 
   }
 
   getOperator(underscript) {
     return asciimathAccents.includes(underscript) ? underscript : `underset(${underscript})`; 
+  }
+
+  isEspecialMathOperatorAscimath(operatorString) {
+    return !!especialMathOperators.find(op => op['character'] === operatorString);
   }
 }

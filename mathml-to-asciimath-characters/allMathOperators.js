@@ -11529,7 +11529,6 @@ module.exports = mathOperators = [
   },
   {
     "character": "&#x2061;",
-    "glyph": "⁡",
     "asciimath": "text",
     "name": "function application",
     "form": "infix",
@@ -11559,17 +11558,6 @@ module.exports = mathOperators = [
     "lspace": 0,
     "rspace": 0,
     "properties": []
-  },
-  {
-    "character": "",
-    "glyph": "",
-    "asciimath": "text(')",
-    "name": "apostrophe",
-    "form": "postfix",
-    "priority": 880,
-    "lspace": 0,
-    "rspace": 0,
-    "properties": ["accent"]
   },
   {
     "character": "++",

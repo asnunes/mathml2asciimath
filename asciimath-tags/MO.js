@@ -1,6 +1,6 @@
 const trim = require('trim');
 const BaseTag = require('./BaseTag');
-const mathOperators = require('../mathml-to-asciimath-characters/mathOperators');
+const mathOperators = require('../mathml-to-asciimath-characters/allMathOperators');
 
 module.exports = class MO extends BaseTag {
   constructor(tag) {
@@ -14,8 +14,7 @@ module.exports = class MO extends BaseTag {
     const trimValue = trim(value);
     const mathOperator = this.getAsciimathOperator(trimValue);
 
-    if (mathOperator) return mathOperator;
-    throw new new Error(`Unknown mo operator: ${trimValue}`);
+    return mathOperator || trimValue;
   }
 
   getAsciimathOperator(trimValue) {

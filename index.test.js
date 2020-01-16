@@ -1221,3 +1221,44 @@ describe('given math string with partial function', () => {
     expect(result).toBe(`f(x)={(x^2,  x<0), (e^x,  xge0):}`);
   });
 });
+
+describe('munder tag with special mi operator', () => {
+  test('returns as a simple sub tag', () => {
+    const mathml = `
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+      <mrow>
+        <mrow>
+          <munder>
+            <mrow>
+              <mi mathvariant="normal">lim</mi>
+            </mrow>
+            <mrow>
+              <mi>x</mi>
+              <mo>→</mo>
+              <mn>3</mn>
+            </mrow>
+          </munder>
+        </mrow>
+        <mo>⁡</mo>
+        <mrow>
+          <msup>
+            <mrow>
+              <mi>x</mi>
+            </mrow>
+            <mrow>
+              <mn>2</mn>
+            </mrow>
+          </msup>
+          <mo>=</mo>
+          <mo>?</mo>
+        </mrow>
+      </mrow>
+    </math>
+    `;
+
+    const result = new Mathml2asciimath(mathml).convert();
+    console.log(result);
+
+    expect(result).toBe(`lim_(xrarr3)⁡x^2=?`);
+  });
+});
