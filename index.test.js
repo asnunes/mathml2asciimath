@@ -62,7 +62,7 @@ describe('given math string with mrow tag', () => {
   
     const result = new Mathml2asciimath(matml).convert();
     
-    expect(result).toMatch('2+2');
+    expect(result).toMatch('2 + 2');
   });
 });
 
@@ -126,7 +126,7 @@ describe('given math string with msup tag containing multiple chars contents', (
   
     const result = new Mathml2asciimath(matml).convert();
     
-    expect(result).toMatch('(a+2)^(b-3)');
+    expect(result).toMatch('(a + 2)^(b - 3)');
   });
 });
 
@@ -307,7 +307,7 @@ describe('given math string with mfrac containing multiple char contents' , () =
     `;
 
     const result = new Mathml2asciimath(matml).convert();
-    expect(result).toMatch('(a+2)/(b-3)');
+    expect(result).toMatch('(a + 2)/(b - 3)');
   });
 });
 
@@ -335,7 +335,7 @@ describe('given math string with mfrac containing two contents with bevelled att
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    expect(result).toMatch('1//(x^3+x/3)');
+    expect(result).toMatch('1//(x^3 + x/3)');
   });
 });
 
@@ -374,7 +374,7 @@ describe('given math string with mpadded tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toMatch('2+2');
+    expect(result).toMatch('2 + 2');
   });
 });
 
@@ -401,7 +401,7 @@ describe('given math string with maction tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toMatch('a+2; b-3');
+    expect(result).toMatch('a + 2; b - 3');
   });
 });
 
@@ -802,7 +802,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('obrace(x+y+z)');
+    expect(result).toBe('obrace(x + y + z)');
   });
 });
 
@@ -827,7 +827,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('obrace(x+y+z)');
+    expect(result).toBe('obrace(x + y + z)');
   });
 });
 
@@ -852,7 +852,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('overset(harr)(x+y+z)');
+    expect(result).toBe('overset(harr)(x + y + z)');
   });
 });
 
@@ -877,7 +877,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('overset(harr)(x+y+z)');
+    expect(result).toBe('overset(harr)(x + y + z)');
   });
 });
 
@@ -901,7 +901,7 @@ describe('given math string with mphantom tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('x+  z');
+    expect(result).toBe('x +    z');
   });
 });
 
@@ -971,7 +971,7 @@ describe('given math string with mtable, mtr and mtd tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('A=[(x, y), (z, w)]');
+    expect(result).toBe('A = [(x, y), (z, w)]');
   });
 });
 
@@ -1012,7 +1012,7 @@ describe('given math string with munder tag where its first child is a mrow and 
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('ubrace(x+y+z)');
+    expect(result).toBe('ubrace(x + y + z)');
   });
 });
 
@@ -1037,7 +1037,7 @@ describe('given math string with munder tag where its first child is a mrow and 
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('ubrace(x+y+z)');
+    expect(result).toBe('ubrace(x + y + z)');
   });
 });
 
@@ -1062,7 +1062,7 @@ describe('given math string with munder tag where its first child is a mrow and 
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('underset(harr)(x+y+z)');
+    expect(result).toBe('underset(harr)(x + y + z)');
   });
 });
 
@@ -1087,7 +1087,7 @@ describe('given math string with munder tag where its first child is a mrow and 
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('underset(harr)(x+y+z)');
+    expect(result).toBe('underset(harr)(x + y + z)');
   });
 });
 
@@ -1178,9 +1178,6 @@ describe('given math string with partial function', () => {
                         </mrow>
                       </msup>
                       <mo>,</mo>
-                      <mi> </mi>
-                      <mi> </mi>
-                      <malignmark></malignmark>
                       <mi>x</mi>
                       <mo>&lt;</mo>
                       <mn>0</mn>
@@ -1200,9 +1197,6 @@ describe('given math string with partial function', () => {
                         </mrow>
                       </msup>
                       <mo>,</mo>
-                      <mi> </mi>
-                      <mi> </mi>
-                      <malignmark></malignmark>
                       <mi>x</mi>
                       <mo>≥</mo>
                       <mn>0</mn>
@@ -1218,7 +1212,7 @@ describe('given math string with partial function', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe(`f(x)={(x^2,  x<0), (e^x,  xge0):}`);
+    expect(result).toBe(`f(x)={( x^2 , x < 0), ( e^x , x ge 0):}`);
   });
 });
 
@@ -1239,7 +1233,6 @@ describe('munder tag with special mi operator', () => {
             </mrow>
           </munder>
         </mrow>
-        <mo>⁡</mo>
         <mrow>
           <msup>
             <mrow>
@@ -1259,6 +1252,6 @@ describe('munder tag with special mi operator', () => {
     const result = new Mathml2asciimath(mathml).convert();
     console.log(result);
 
-    expect(result).toBe(`lim_(xrarr3)⁡x^2=?`);
+    expect(result).toBe(`lim_(x rarr 3) x^2 = ?`);
   });
 });

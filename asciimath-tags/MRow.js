@@ -6,6 +6,6 @@ module.exports = class MRow extends BaseTag {
   }
 
   toAsciimath() {
-    return this.mapChildrenToAsciimath().join('');
+    return this.mapChildrenToAsciimath().join(' ');
   }
 }
