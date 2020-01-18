@@ -16,8 +16,6 @@ module.exports = class MOver extends BaseTag {
     const content = children[0];
     const brace = children[1];
 
-    if (brace.constructor.name !== 'MO') throw new Error('Second tag should be a mo tag');
-
     const contentAscii = content.toAsciimath();
     const braceAscii = brace.toAsciimath();
 
