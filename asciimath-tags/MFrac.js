@@ -1,5 +1,5 @@
 const BaseTag = require('./BaseTag');
-const addParenthesesIfIsMoreThanOneChar = require('../utils/addParenthesesToMultipleCharString');
+const addParenthesesIfIsMoreThanOneChar = require('../utils/addParenthesesIfIsMoreThanOneChar');
 
 module.exports = class MFrac extends BaseTag {
   constructor(tag) {

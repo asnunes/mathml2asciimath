@@ -12,7 +12,7 @@ module.exports = class MI extends BaseTag {
     if (children.length > 0) return this.mapChildrenToAsciimath().join('');
 
     const normalizedValue = this.normalizeWhitespaces(value);
-    if (normalizedValue === ' ') return normalizedValue;
+    if (normalizedValue === ' ') return '\\' + normalizedValue;
 
     const trimValue = trim(value);
     return this.getMathSymbol(trimValue) || trimValue;

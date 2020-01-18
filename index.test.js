@@ -85,7 +85,7 @@ describe('given math string with msqrt tag', () => {
 });
 
 describe('given math string with msup tag containing single char contents', () => {
-  test('parse msup joining its two char contents with \^', () => {
+  test('parse msup joining its two char contents with \^ and wrapping in parentheses', () => {
     const matml = `
       <root>
         <math>
@@ -99,7 +99,7 @@ describe('given math string with msup tag containing single char contents', () =
   
     const result = new Mathml2asciimath(matml).convert();
     
-    expect(result).toMatch('a^2');
+    expect(result).toMatch('a^(2)');
   });
 });
 
@@ -335,7 +335,7 @@ describe('given math string with mfrac containing two contents with bevelled att
     `;
   
     const result = new Mathml2asciimath(matml).convert();
-    expect(result).toMatch('1//(x^3 + x/3)');
+    expect(result).toMatch('1//(x^(3) + x/3)');
   });
 });
 
@@ -906,7 +906,7 @@ describe('given math string with mphantom tag', () => {
 });
 
 describe('given math string with msub tag', () => {
-  it('join its children using _', () => {
+  it('join its children using _ and wrapping in parentheses', () => {
     const matml = `
       <root>
         <math>
@@ -920,12 +920,12 @@ describe('given math string with msub tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('X_1');
+    expect(result).toBe('X_(1)');
   });
 });
 
 describe('given math string with msubsup tag', () => {
-  it('join its children using _ and ^', () => {
+  it('join its children using _ and ^ and wrapping in parentheses', () => {
     const matml = `
       <root>
         <math>
@@ -940,7 +940,7 @@ describe('given math string with msubsup tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('int_0^1');
+    expect(result).toBe('int_(0)^(1)');
   });
 });
 
@@ -1146,7 +1146,7 @@ describe('given math string with whitespaces', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('km 95');
+    expect(result).toBe('km\\ 95');
   });
 });
 
@@ -1165,7 +1165,7 @@ describe('given math string with 2 whitespaces inside a mi tag', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe('km 95');
+    expect(result).toBe('km\\ 95');
   });
 });
 
@@ -1232,7 +1232,7 @@ describe('given math string with partial function', () => {
 
     const result = new Mathml2asciimath(matml).convert();
 
-    expect(result).toBe(`f(x)={( x^2 , x < 0), ( e^x , x ge 0):}`);
+    expect(result).toBe(`f(x)={( x^(2) , x < 0), ( e^(x) , x ge 0):}`);
   });
 });
 
@@ -1272,7 +1272,7 @@ describe('munder tag with special mi operator', () => {
     const result = new Mathml2asciimath(mathml).convert();
     console.log(result);
 
-    expect(result).toBe(`lim_(x rarr 3) x^2 = ?`);
+    expect(result).toBe(`lim_(x rarr 3) x^(2) = ?`);
   });
 });
 
@@ -1309,7 +1309,7 @@ describe('munder tag with special mi operator', () => {
     const result = new Mathml2asciimath(mathml).convert();
     console.log(result);
 
-    expect(result).toBe(`sum_(n = 1)^(oo) a_n`);
+    expect(result).toBe(`sum_(n = 1)^(oo) a_(n)`);
   });
 });
 
@@ -1551,7 +1551,7 @@ describe('mtable tag with other mtable tag nested inside', () => {
     const result = new Mathml2asciimath(mathml).convert();
     console.log(result);
 
-    expect(result).toBe(`A_(m xx n)=(((a_(11), a_(12)), (..., ...), a_(1 n)), ((a_(21), a_(22)), (ddots, ), a_(2 n)), (((vdots , vdots))((a_(m 1), a_(m 2))), (( , ddots))((..., ...)), (vdots)(a_(m n)))) `);
+    expect(result).toBe(`A_(m xx n)=(((a_(11), a_(12)), (..., ...), a_(1 n)), ((a_(21), a_(22)), (ddots, \\ ), a_(2 n)), (((vdots\\ \\ \\ \\ , vdots))((a_(m 1), a_(m 2))), ((\\ , ddots))((..., ...)), (vdots)(a_(m n))))\\ `);
   });
 });
 
@@ -1582,7 +1582,6 @@ describe('mmultiscripts tag with down and up children', () => {
   });
 });
 
-
 describe('mmultiscripts tag with only prescript', () => {
   test('returns and subscript follow by base', () => {
     const mathml = `
@@ -1604,5 +1603,52 @@ describe('mmultiscripts tag with only prescript', () => {
     console.log(result);
 
     expect(result).toBe(`{::}_(11)N a`);
+  });
+});
+
+describe('many tags with text', () => {
+  test('escape spaces with backslashes', () => {
+    const mathml = `
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+      <mrow>
+        <mi>&#xA0;</mi>
+        <mi>&#xA0;</mi>
+        <mi>&#xA0;</mi>
+        <mi>&#xA0;</mi>
+        <mi>t</mi>
+        <mi>o</mi>
+        <mi>d</mi>
+        <mi>o</mi>
+        <mi>s</mi>
+        <mi>&#xA0;</mi>
+        <mi>o</mi>
+        <mi>s</mi>
+        <mi>&#xA0;</mi>
+        <mi>v</mi>
+        <mi>a</mi>
+        <mi>l</mi>
+        <mi>o</mi>
+        <mi>r</mi>
+        <mi>e</mi>
+        <mi>s</mi>
+        <mi>&#xA0;</mi>
+        <mi>e</mi>
+        <mi>m</mi>
+        <mi>&#xA0;</mi>
+        <mi>m</mi>
+        <mi>&#xF3;</mi>
+        <mi>d</mi>
+        <mi>u</mi>
+        <mi>l</mi>
+        <mi>o</mi>
+        <mo>!</mo>
+      </mrow>
+    </math>
+    `;
+
+    const result = new Mathml2asciimath(mathml).convert();
+    console.log(result);
+
+    expect(result).toBe(`\\ \\ \\ \\ t o d o s \\ o s \\ v a l o r e s \\ e m \\ m ó d u l o !`);
   });
 });

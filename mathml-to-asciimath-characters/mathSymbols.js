@@ -522,4 +522,10 @@ module.exports = mathSymbols = [
       "asciimath": "EE",
       "name": "exists",
     },
+    {
+      "character": "&#xA0;",
+      "glyph": " ",
+      "asciimath": "\\",
+      "name": "empty space",
+    },
 ];

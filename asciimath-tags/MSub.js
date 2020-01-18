@@ -1,6 +1,5 @@
 const BaseTag = require('./BaseTag');
-const addParenthesesIfIsMoreThanOneChar = require('../utils/addParenthesesToMultipleCharString');
-
+const addParenthesesIfThereIsEmptySpaces = require('../utils/addParenthesesIfThereIsEmptySpaces');
 
 module.exports = class MSub extends BaseTag {
   constructor(tag) {
@@ -16,9 +15,7 @@ module.exports = class MSub extends BaseTag {
 
     const base = children[0];
     const exponent = children[1];
-    const baseAscii = addParenthesesIfIsMoreThanOneChar(base.toAsciimath());
-    const exponentAscii = addParenthesesIfIsMoreThanOneChar(exponent.toAsciimath());
   
-    return `${baseAscii}_${exponentAscii}`;
+    return `${addParenthesesIfThereIsEmptySpaces(base.toAsciimath())}_(${exponent.toAsciimath()})`;
   }
 }
