@@ -1,4 +1,5 @@
 const BaseTag = require('./BaseTag');
+const trim = require('trim');
 
 module.exports = class MRow extends BaseTag {
   constructor(tag) {
@@ -27,7 +28,10 @@ module.exports = class MRow extends BaseTag {
     const prescriptsAnscii = prescripts.map(pre => pre.toAsciimath());
     const posScriptsAnscii = posScripts.map(pos => pos.toAsciimath());
 
-    return `{::}_(${prescriptsAnscii.join(', ')})${base.toAsciimath()}^(${posScriptsAnscii.join(', ')})`;
+    const prescriptString = isOnlyEmptySpaces(prescriptsAnscii) ? '' : `{::}_(${prescriptsAnscii.join(', ')})`;
+    const posScriptString = isOnlyEmptySpaces(posScriptsAnscii) ? '' : `^(${posScriptsAnscii.join(', ')})`;
+
+    return prescriptString + base.toAsciimath() + posScriptString;
   }
 }
 
@@ -36,4 +40,8 @@ const PRE_SCRIPT_FLAG = 'preScript';
 
 function findChildrenByFlag(children, flag) {
     return children.filter(c => c.tag.attributes.currentFlag === flag);
+}
+
+function isOnlyEmptySpaces(arrOfStr) {
+    return trim(arrOfStr.join('')) === '';
 }

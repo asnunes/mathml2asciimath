@@ -1581,3 +1581,28 @@ describe('mmultiscripts tag with down and up children', () => {
     expect(result).toBe(`{::}_(11)N a^(+)`);
   });
 });
+
+
+describe('mmultiscripts tag with only prescript', () => {
+  test('returns and subscript follow by base', () => {
+    const mathml = `
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+      <mmultiscripts>
+        <mrow>
+          <mi>N</mi>
+          <mi>a</mi>
+        </mrow>
+        <mprescripts />
+        <mrow>
+          <mn>11</mn>
+        </mrow>
+      </mmultiscripts>
+    </math>
+    `;
+
+    const result = new Mathml2asciimath(mathml).convert();
+    console.log(result);
+
+    expect(result).toBe(`{::}_(11)N a`);
+  });
+});
