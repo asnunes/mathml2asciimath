@@ -1554,3 +1554,30 @@ describe('mtable tag with other mtable tag nested inside', () => {
     expect(result).toBe(`A_(m xx n)=(((a_(11), a_(12)), (..., ...), a_(1 n)), ((a_(21), a_(22)), (ddots, ), a_(2 n)), (((vdots , vdots))((a_(m 1), a_(m 2))), (( , ddots))((..., ...)), (vdots)(a_(m n)))) `);
   });
 });
+
+describe('mmultiscripts tag with down and up children', () => {
+  test('returns and subscript follow by base and superscript', () => {
+    const mathml = `
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+      <mmultiscripts>
+        <mrow>
+          <mi>N</mi>
+          <mi>a</mi>
+        </mrow>
+        <mprescripts />
+        <mrow>
+          <mn>11</mn>
+        </mrow>
+        <mrow>
+          <mi>+</mi>
+        </mrow>
+      </mmultiscripts>
+    </math>
+    `;
+
+    const result = new Mathml2asciimath(mathml).convert();
+    console.log(result);
+
+    expect(result).toBe(`{::}_(11)N a^(+)`);
+  });
+});
