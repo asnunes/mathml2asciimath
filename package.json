@@ -11,6 +11,14 @@
   "scripts": {
     "test": "jest"
   },
+  "keywords": [
+    "mathml",
+    "asciimath",
+    "asciimathml",
+    "html",
+    "xml",
+    "math"
+  ],
   "dependencies": {
     "trim": "^0.0.1",
     "xmldom": "^0.2.1"
