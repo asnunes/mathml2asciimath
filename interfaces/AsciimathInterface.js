@@ -1,6 +1,6 @@
 const Dispatcher = require('../dispatcher/Dispatcher');
 
-module.exports = class AsciiInterface {
+module.exports = class AsciimathInterface {
   constructor(xmlDocument) {
     this.xmlDocument = xmlDocument;
   }
