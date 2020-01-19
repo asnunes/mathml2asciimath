@@ -1,6 +1,6 @@
 const BaseTag = require('./BaseTag');
 const asciimathAccents = require('../syntax/asciimathAccents');
-const especialMathOperators = require('../mathml-to-asciimath-characters/mathEspecialOperators');
+const especialMathOperators = require('../syntax/mathEspecialOperators');
 
 module.exports = class MUnder extends BaseTag {
   constructor(tag) {

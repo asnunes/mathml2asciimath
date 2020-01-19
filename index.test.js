@@ -1270,7 +1270,6 @@ describe('munder tag with special mi operator', () => {
     `;
 
     const result = new Mathml2asciimath(mathml).convert();
-    console.log(result);
 
     expect(result).toBe(`lim_(x rarr 3) x^(2) = ?`);
   });
@@ -1307,7 +1306,6 @@ describe('munder tag with special mi operator', () => {
     `;
 
     const result = new Mathml2asciimath(mathml).convert();
-    console.log(result);
 
     expect(result).toBe(`sum_(n = 1)^(oo) a_(n)`);
   });
@@ -1549,7 +1547,6 @@ describe('mtable tag with other mtable tag nested inside', () => {
     `;
 
     const result = new Mathml2asciimath(mathml).convert();
-    console.log(result);
 
     expect(result).toBe(`A_(m xx n)=(((a_(11), a_(12)), (..., ...), a_(1 n)), ((a_(21), a_(22)), (ddots, \\ ), a_(2 n)), (((vdots\\ \\ \\ \\ , vdots))((a_(m 1), a_(m 2))), ((\\ , ddots))((..., ...)), (vdots)(a_(m n))))\\ `);
   });
@@ -1576,7 +1573,6 @@ describe('mmultiscripts tag with down and up children', () => {
     `;
 
     const result = new Mathml2asciimath(mathml).convert();
-    console.log(result);
 
     expect(result).toBe(`{::}_(11)N a^(+)`);
   });
@@ -1600,7 +1596,6 @@ describe('mmultiscripts tag with only prescript', () => {
     `;
 
     const result = new Mathml2asciimath(mathml).convert();
-    console.log(result);
 
     expect(result).toBe(`{::}_(11)N a`);
   });
@@ -1647,7 +1642,6 @@ describe('many tags with text', () => {
     `;
 
     const result = new Mathml2asciimath(mathml).convert();
-    console.log(result);
 
     expect(result).toBe(`\\ \\ \\ \\ t o d o s \\ o s \\ v a l o r e s \\ e m \\ m ó d u l o !`);
   });

@@ -1,6 +1,6 @@
 const trim = require('trim');
 const BaseTag = require('./BaseTag');
-const mathOperators = require('../mathml-to-asciimath-characters/allMathOperators');
+const mathOperators = require('../syntax/allMathOperators');
 
 module.exports = class MO extends BaseTag {
   constructor(tag) {
