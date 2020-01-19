@@ -1,4 +1,4 @@
-const AsciimathTags = require('../mathml-tags');
+const mathmlTags = require('../mathml-tags');
 
 module.exports = class Dispatcher {
   constructor(el) {
@@ -9,8 +9,8 @@ module.exports = class Dispatcher {
     const { name, value, attributes } = this.el;
     const children = this.el.children.map(el => new Dispatcher(el).dispatch());
 
-    return AsciimathTags[name] ? 
-      new AsciimathTags[name]({ value, attributes, children }) :
-      new AsciimathTags['basetag']({ value, attributes, children });
+    return mathmlTags[name] ?
+      new mathmlTags[name]({ value, attributes, children }) :
+      new mathmlTags['basetag']({ value, attributes, children });
   }
 }
