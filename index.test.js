@@ -2,9 +2,9 @@ const Mathml2asciimath = require('./index');
 
 describe('given math string with mi tag', () => {
   test('parse mi to simple ascii variable', () => {
-    const matml = '<root><math><mi>a</mi></math></root>';
+    const mathml = '<root><math><mi>a</mi></math></root>';
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('a');
   });
@@ -12,9 +12,9 @@ describe('given math string with mi tag', () => {
 
 describe('given math tag outside any other tag', () => {
   test('parse iner math', () => {
-    const matml = '<math><mi>b</mi></math>';
+    const mathml = '<math><mi>b</mi></math>';
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('b');
   });
@@ -22,9 +22,9 @@ describe('given math tag outside any other tag', () => {
 
 describe('given math string with mi tag with space on it', () => {
   test('should trim empty space', () => {
-    const matml = '<root><math><mi> a </mi></math></root>';
+    const mathml = '<root><math><mi> a </mi></math></root>';
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('a');
   });
@@ -32,7 +32,7 @@ describe('given math string with mi tag with space on it', () => {
 
 describe('given math string with mo tag with simple operator', () => {
   test('parse mo just passing it operator as string', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mo>+</mo>
@@ -40,7 +40,7 @@ describe('given math string with mo tag with simple operator', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('+');
   });
@@ -48,7 +48,7 @@ describe('given math string with mo tag with simple operator', () => {
 
 describe('given math string with mrow tag', () => {
   test('parse mrow just wrapping its content', () => {
-    const matml = `
+    const mathml = `
     <root>
       <math>
         <mrow>
@@ -60,7 +60,7 @@ describe('given math string with mrow tag', () => {
     </root>
   `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     
     expect(result).toMatch('2 + 2');
   });
@@ -68,7 +68,7 @@ describe('given math string with mrow tag', () => {
 
 describe('given math string with msqrt tag', () => {
   test('parse msqrt wrapping its content inside sqrt ascii command', () => {
-    const matml = `
+    const mathml = `
     <root>
       <math>
         <msqrt>
@@ -78,7 +78,7 @@ describe('given math string with msqrt tag', () => {
     </root>
   `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     
     expect(result).toMatch('sqrt(2)');
   });
@@ -86,7 +86,7 @@ describe('given math string with msqrt tag', () => {
 
 describe('given math string with msup tag containing single char contents', () => {
   test('parse msup joining its two char contents with \^ and wrapping in parentheses', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <msup>
@@ -97,7 +97,7 @@ describe('given math string with msup tag containing single char contents', () =
       </root>
     `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     
     expect(result).toMatch('a^(2)');
   });
@@ -105,7 +105,7 @@ describe('given math string with msup tag containing single char contents', () =
 
 describe('given math string with msup tag containing multiple chars contents', () => {
   test('parse msup wrapping them using parentheses and joining its two strings contents into \^', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <msup>
@@ -124,7 +124,7 @@ describe('given math string with msup tag containing multiple chars contents', (
       </root>
     `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     
     expect(result).toMatch('(a + 2)^(b - 3)');
   });
@@ -132,7 +132,7 @@ describe('given math string with msup tag containing multiple chars contents', (
 
 describe('given math string with mfenced with single content and no attr', () => {
   test('parse mfenced wrapping it content inside parentheses', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
         <mfenced>
@@ -142,7 +142,7 @@ describe('given math string with mfenced with single content and no attr', () =>
       </root>
     `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     
     expect(result).toMatch('(3)');
   });
@@ -150,7 +150,7 @@ describe('given math string with mfenced with single content and no attr', () =>
 
 describe('given math string with mfenced with more than one content and no attr', () => {
   test('parse mfenced wrapping it content inside parentheses and joining using commas', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
         <mfenced>
@@ -162,7 +162,7 @@ describe('given math string with mfenced with more than one content and no attr'
       </root>
     `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     
     expect(result).toMatch('(3,2,1)');
   });
@@ -170,7 +170,7 @@ describe('given math string with mfenced with more than one content and no attr'
 
 describe('given math string with mfenced with three contents with separator attribute \';;;\'', () => {
   test('parse mfenced wrapping it content inside parentheses and joining using \';\'', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
         <mfenced separators=';;;'>
@@ -182,7 +182,7 @@ describe('given math string with mfenced with three contents with separator attr
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('(3;2;1)');
   });
@@ -190,7 +190,7 @@ describe('given math string with mfenced with three contents with separator attr
 
 describe('given math string with mfenced with four contents with separator attribute \';.\'', () => {
   test('parse mfenced wrapping it content inside parentheses and joining using \';\' for the first, \'.\' for the second on', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
         <mfenced separators=';.'>
@@ -203,7 +203,7 @@ describe('given math string with mfenced with four contents with separator attri
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('(3;2.1.7)');
   });
@@ -211,7 +211,7 @@ describe('given math string with mfenced with four contents with separator attri
 
 describe('given math string with mfenced with four contents with separator attribute as empty string', () => {
   test('parse mfenced wrapping it content inside parentheses and joining using commas', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
         <mfenced separators=''>
@@ -224,7 +224,7 @@ describe('given math string with mfenced with four contents with separator attri
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('(3,2,1,7)');
   });
@@ -232,7 +232,7 @@ describe('given math string with mfenced with four contents with separator attri
 
 describe('given math string with mfenced with single content, open and close attrs settled as {', () => {
   test('parse mfenced wrapping it content inside parentheses', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
         <mfenced open='{' close='}'>
@@ -242,7 +242,7 @@ describe('given math string with mfenced with single content, open and close att
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('{3}');
   });
@@ -250,7 +250,7 @@ describe('given math string with mfenced with single content, open and close att
 
 describe('given math string with mfenced with single content, open attr settled as { and void close tag' , () => {
   test('parse mfenced wrapping it content inside parentheses', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
         <mfenced open='{' close >
@@ -260,7 +260,7 @@ describe('given math string with mfenced with single content, open attr settled 
       </root>
     `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     
     expect(result).toMatch('{3:}');
   });
@@ -268,7 +268,7 @@ describe('given math string with mfenced with single content, open attr settled 
 
 describe('given math string with mfrac containing single char contents' , () => {
   test('parse mfrac joining its two char contents with /', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mfrac>
@@ -279,7 +279,7 @@ describe('given math string with mfrac containing single char contents' , () => 
       </root>
     `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     
     expect(result).toMatch('x/3');
   });
@@ -287,7 +287,7 @@ describe('given math string with mfrac containing single char contents' , () => 
 
 describe('given math string with mfrac containing multiple char contents' , () => {
   test('parse mfrac joining its two contents with / wrapping them into parentheses', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mfrac>
@@ -306,14 +306,14 @@ describe('given math string with mfrac containing multiple char contents' , () =
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     expect(result).toMatch('(a + 2)/(b - 3)');
   });
 });
 
 describe('given math string with mfrac containing two contents with bevelled attribute marked as true' , () => {
   test('parse mfrac joining its two char contents with //', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mfrac bevelled="true">
@@ -334,7 +334,7 @@ describe('given math string with mfrac containing two contents with bevelled att
       </root>
     `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     expect(result).toMatch('1//(x^(3) + x/3)');
   });
 });
@@ -342,7 +342,7 @@ describe('given math string with mfrac containing two contents with bevelled att
 
 describe('given math string with mroot containing two content' , () => {
   test('parse mroot tag wrapping its contents inside root(x)(y), where x is the second mroot\'s child and y is the first one', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mroot>
@@ -353,14 +353,14 @@ describe('given math string with mroot containing two content' , () => {
       </root>
     `;
   
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
     expect(result).toMatch('root(3)(z)');
   });
 });
 
 describe('given math string with mpadded tag', () => {
   test('parse mpadded just wrapping its content', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mpadded>
@@ -372,7 +372,7 @@ describe('given math string with mpadded tag', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('2 + 2');
   });
@@ -380,7 +380,7 @@ describe('given math string with mpadded tag', () => {
 
 describe('given math string with maction tag', () => {
   test('parse maction just joining its content separating them by ;', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <maction>
@@ -399,7 +399,7 @@ describe('given math string with maction tag', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('a + 2; b - 3');
   });
@@ -407,7 +407,7 @@ describe('given math string with maction tag', () => {
 
 describe('given math string with menclose tag without notation attribute', () => {
   test('parse menclose tag just joining its content', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose>
@@ -419,7 +419,7 @@ describe('given math string with menclose tag without notation attribute', () =>
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('a+2');
   });
@@ -427,7 +427,7 @@ describe('given math string with menclose tag without notation attribute', () =>
 
 describe('given math string with menclose tag with notation attribute equals to \'longdiv\'', () => {
   test('parse menclose tag just wrapping its content in a ) followed by bar command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='longdiv'>
@@ -439,7 +439,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch(')bar(a+2)');
   });
@@ -447,7 +447,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'actuarial\'', () => {
   test('parse menclose tag just wrapping its content bar command followed by |', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='actuarial'>
@@ -459,7 +459,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('bar(a+2)|');
   });
@@ -467,7 +467,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'box\'', () => {
   test('parse menclose tag wrapping its content in | followed bar and ul commands followed by another |', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='box'>
@@ -479,7 +479,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('|ul(bar(a+2))|');
   });
@@ -487,7 +487,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'roundedbox\'', () => {
   test('parse menclose tag wrapping its content in ( followed bar and ul commands followed by )', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='roundedbox'>
@@ -499,7 +499,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('(ul(bar(a+2)))');
   });
@@ -507,7 +507,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'circle\'', () => {
   test('parse menclose tag wrapping its content in ( followed bar and ul commands followed by )', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='circle'>
@@ -519,7 +519,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('(ul(bar(a+2)))');
   });
@@ -527,7 +527,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'left\'', () => {
   test('parse menclose placing | followed by content', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='left'>
@@ -539,7 +539,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('|a+2');
   });
@@ -547,7 +547,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'right\'', () => {
   test('parse menclose placing content followed by |', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='right'>
@@ -559,7 +559,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('a+2|');
   });
@@ -567,7 +567,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'top\'', () => {
   test('parse menclose placing content as argument of bar command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='top'>
@@ -579,7 +579,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('bar(a+2)');
   });
@@ -587,7 +587,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'bottom\'', () => {
   test('parse menclose placing content as argument of ul command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='bottom'>
@@ -599,7 +599,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('ul(a+2)');
   });
@@ -607,7 +607,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'updiagonalstrike\'', () => {
   test('parse menclose placing content as argument of cancel command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='updiagonalstrike'>
@@ -619,7 +619,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('cancel(a+2)');
   });
@@ -627,7 +627,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'downdiagonalstrike\'', () => {
   test('parse menclose placing content as argument of cancel command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='downdiagonalstrike'>
@@ -639,7 +639,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('cancel(a+2)');
   });
@@ -647,7 +647,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'verticalstrike\'', () => {
   test('parse menclose placing content as argument of cancel command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='verticalstrike'>
@@ -659,7 +659,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('cancel(a+2)');
   });
@@ -667,7 +667,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'horizontalstrike\'', () => {
   test('parse menclose placing content as argument of cancel command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='horizontalstrike'>
@@ -679,7 +679,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('cancel(a+2)');
   });
@@ -687,7 +687,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'madruwb\'', () => {
   test('parse menclose placing content as argument of ul command followed by |', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='madruwb'>
@@ -699,7 +699,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('ul(a+2)|');
   });
@@ -707,7 +707,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'updiagonalarrow\'', () => {
   test('parse menclose placing content as argument of cancel command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='updiagonalarrow'>
@@ -719,7 +719,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('cancel(a+2)|');
   });
@@ -727,7 +727,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with menclose tag with notation attribute equals to \'phasorangle\'', () => {
   test('parse menclose placing \/ followed by content as argument of ul command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <menclose notation='phasorangle'>
@@ -739,7 +739,7 @@ describe('given math string with menclose tag with notation attribute equals to 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('\/ul(a+2)');
   });
@@ -747,7 +747,7 @@ describe('given math string with menclose tag with notation attribute equals to 
 
 describe('given math string with merror tag', () => {
   test('parse merror placing its content inside color(red) followed by |, ul, bar commands and finally |', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <merror>
@@ -759,7 +759,7 @@ describe('given math string with merror tag', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toMatch('color(red)(|ul(bar(a+2))|)');
   });
@@ -767,7 +767,7 @@ describe('given math string with merror tag', () => {
 
 describe('given math string with mglyph tag', () => {
   test('ignore it', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mi><mglyph src="my-glyph.png" alt="my glyph"/></mi>
@@ -775,7 +775,7 @@ describe('given math string with mglyph tag', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('');
   });
@@ -783,7 +783,7 @@ describe('given math string with mglyph tag', () => {
 
 describe('given math string with mover tag where its first child is a mrow and second is mo containing ⏞', () => {
   test('parce wrapping it content inside obrace command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mover accent="true">
@@ -800,7 +800,7 @@ describe('given math string with mover tag where its first child is a mrow and s
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('obrace(x + y + z)');
   });
@@ -808,7 +808,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 
 describe('given math string with mover tag where its first child is a mrow and second is mo containing &#x23DE;', () => {
   test('parce wrapping it content inside obrace command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mover accent="true">
@@ -825,7 +825,7 @@ describe('given math string with mover tag where its first child is a mrow and s
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('obrace(x + y + z)');
   });
@@ -833,7 +833,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 
 describe('given math string with mover tag where its first child is a mrow and second is mo containing ⥨, an accent without ascii command', () => {
   test('parce wrapping it content inside overset command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mover accent="true">
@@ -850,7 +850,7 @@ describe('given math string with mover tag where its first child is a mrow and s
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('overset(harr)(x + y + z)');
   });
@@ -858,7 +858,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 
 describe('given math string with mover tag where its first child is a mrow and second is mo containing &#x2968;, an accent without ascii command', () => {
   test('parce wrapping it content inside overset command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mover accent="true">
@@ -875,7 +875,7 @@ describe('given math string with mover tag where its first child is a mrow and s
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('overset(harr)(x + y + z)');
   });
@@ -883,7 +883,7 @@ describe('given math string with mover tag where its first child is a mrow and s
 
 describe('given math string with mphantom tag', () => {
   it('replaces every ascii character inside tag to empty space and then normalize it', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mrow>
@@ -899,7 +899,7 @@ describe('given math string with mphantom tag', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('x + z');
   });
@@ -907,7 +907,7 @@ describe('given math string with mphantom tag', () => {
 
 describe('given math string with msub tag', () => {
   it('join its children using _ and wrapping in parentheses', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <msub>
@@ -918,7 +918,7 @@ describe('given math string with msub tag', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('X_(1)');
   });
@@ -926,7 +926,7 @@ describe('given math string with msub tag', () => {
 
 describe('given math string with msubsup tag', () => {
   it('join its children using _ and ^ and wrapping in parentheses', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <msubsup>
@@ -938,7 +938,7 @@ describe('given math string with msubsup tag', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('int_(0)^(1)');
   });
@@ -946,7 +946,7 @@ describe('given math string with msubsup tag', () => {
 
 describe('given math string with mtable, mtr and mtd tag', () => {
   it('returns a matrix representation in asciimath', () => {
-    const matml = `
+    const mathml = `
     <root>
       <math xmlns = "http://www.w3.org/1998/Math/MathML">
         <mrow>
@@ -969,7 +969,7 @@ describe('given math string with mtable, mtr and mtd tag', () => {
     </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('A = [(x, y), (z, w)]');
   });
@@ -977,7 +977,7 @@ describe('given math string with mtable, mtr and mtd tag', () => {
 
 describe('given math string with mtext', () => {
   it('wrap its content inside text command', () => {
-    const matml = `
+    const mathml = `
     <root>
       <math xmlns = "http://www.w3.org/1998/Math/MathML">
         <mtext> Theorem of Pythagoras </mtext>
@@ -985,7 +985,7 @@ describe('given math string with mtext', () => {
     </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('text( Theorem of Pythagoras )');
   });
@@ -993,7 +993,7 @@ describe('given math string with mtext', () => {
 
 describe('given math string with munder tag where its first child is a mrow and second is mo containing ⏞', () => {
   it('wrap its content inside ubrace command', () => {
-    const matml = `
+    const mathml = `
     <root>
       <math xmlns = "http://www.w3.org/1998/Math/MathML">
         <munder>
@@ -1010,7 +1010,7 @@ describe('given math string with munder tag where its first child is a mrow and 
     </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('ubrace(x + y + z)');
   });
@@ -1018,7 +1018,7 @@ describe('given math string with munder tag where its first child is a mrow and 
 
 describe('given math string with munder tag where its first child is a mrow and second is mo containing &#x23DE;', () => {
   test('parce wrapping it content inside ubrace command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <munder accent="true">
@@ -1035,7 +1035,7 @@ describe('given math string with munder tag where its first child is a mrow and 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('ubrace(x + y + z)');
   });
@@ -1043,7 +1043,7 @@ describe('given math string with munder tag where its first child is a mrow and 
 
 describe('given math string with munder tag where its first child is a mrow and second is mo containing ⥨, an accent without ascii command', () => {
   test('parce wrapping it content inside underset command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <munder accent="true">
@@ -1060,7 +1060,7 @@ describe('given math string with munder tag where its first child is a mrow and 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('underset(harr)(x + y + z)');
   });
@@ -1068,7 +1068,7 @@ describe('given math string with munder tag where its first child is a mrow and 
 
 describe('given math string with munder tag where its first child is a mrow and second is mo containing &#x2968;, an accent without ascii command', () => {
   test('parce wrapping it content inside underset command', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <munder accent="true">
@@ -1085,7 +1085,7 @@ describe('given math string with munder tag where its first child is a mrow and 
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('underset(harr)(x + y + z)');
   });
@@ -1093,7 +1093,7 @@ describe('given math string with munder tag where its first child is a mrow and 
 
 describe('given math string with munderover tag with three contents', () => {
   test('wrap it inside underset and overset commands', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <munderover>
@@ -1105,7 +1105,7 @@ describe('given math string with munderover tag with three contents', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('underset(0)(overset(oo)(A))');
   });
@@ -1113,7 +1113,7 @@ describe('given math string with munderover tag with three contents', () => {
 
 describe('given math string with munderover tag with three contents and especial operator', () => {
   test('handle it as it were an subsup tag', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <munderover>
@@ -1125,7 +1125,7 @@ describe('given math string with munderover tag with three contents and especial
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('int_(0)^(oo)');
   });
@@ -1133,7 +1133,7 @@ describe('given math string with munderover tag with three contents and especial
 
 describe('given math string with whitespaces', () => {
   test('preserves whitespace', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mi>k</mi>
@@ -1144,7 +1144,7 @@ describe('given math string with whitespaces', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('km\\ 95');
   });
@@ -1152,7 +1152,7 @@ describe('given math string with whitespaces', () => {
 
 describe('given math string with 2 whitespaces inside a mi tag', () => {
   test('normalize whitespace', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math>
           <mi>k</mi>
@@ -1163,7 +1163,7 @@ describe('given math string with 2 whitespaces inside a mi tag', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe('km\\ 95');
   });
@@ -1172,7 +1172,7 @@ describe('given math string with 2 whitespaces inside a mi tag', () => {
 
 describe('given math string with partial function', () => {
   test('return partial function with { and :}', () => {
-    const matml = `
+    const mathml = `
       <root>
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mi>f</mi>
@@ -1230,7 +1230,7 @@ describe('given math string with partial function', () => {
       </root>
     `;
 
-    const result = new Mathml2asciimath(matml).convert();
+    const result = new Mathml2asciimath(mathml).convert();
 
     expect(result).toBe(`f(x)={( x^(2) , x < 0), ( e^(x) , x ge 0):}`);
   });
