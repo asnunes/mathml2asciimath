@@ -1,4 +1,4 @@
-const AsciimathTags = require('../asciimath-tags');
+const AsciimathTags = require('../mathml-tags');
 
 module.exports = class Dispatcher {
   constructor(el) {
