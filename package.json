@@ -7,7 +7,7 @@
   "repository": "git@github.com:asnunes/mathml2asciimath.git",
   "author": "Alexandre Nunes <alexandrenunes@poli.ufrj.br>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "test": "jest"
   },
