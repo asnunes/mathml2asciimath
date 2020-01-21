@@ -1,5 +1,7 @@
 # mathml2asciimath
 
+[![npm version](https://badge.fury.io/js/mathml2asciimath.svg)](https://badge.fury.io/js/mathml2asciimath)
+
 It converts [MathML](https://en.wikipedia.org/wiki/MathML) to [ASCIIMath](http://asciimath.org/). 
 
 Please notice that ASCIIMath represents only a subset of MathML context, therefore some information may be lost in the process. In general, if it can be represented in ASCIIMath, it will be well converted.
