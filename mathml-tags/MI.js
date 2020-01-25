@@ -1,4 +1,3 @@
-const trim = require('trim');
 const BaseTag = require('./BaseTag');
 const mathSymbols = require('../syntax/mathSymbols');
 
@@ -14,7 +13,7 @@ module.exports = class MI extends BaseTag {
     const normalizedValue = this.normalizeWhitespaces(value);
     if (normalizedValue === ' ') return '\\' + normalizedValue;
 
-    const trimValue = trim(value);
+    const trimValue = value.trim();
     return this.getMathSymbol(trimValue) || trimValue;
   }
 

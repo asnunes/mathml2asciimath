@@ -1,4 +1,3 @@
-const trim = require('trim');
 const BaseTag = require('./BaseTag');
 
 module.exports = class MFenced extends BaseTag {
@@ -20,7 +19,7 @@ module.exports = class MFenced extends BaseTag {
   getFence(attr, defaultValue) {
     if (attr === '' || attr === 'null') return ':}'
     if (!attr) return defaultValue;
-    return trim(attr);
+    return attr.trim();
   }
 
   getSeparatorFor(index) {

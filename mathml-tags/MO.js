@@ -1,4 +1,3 @@
-const trim = require('trim');
 const BaseTag = require('./BaseTag');
 const mathOperators = require('../syntax/allMathOperators');
 
@@ -11,7 +10,7 @@ module.exports = class MO extends BaseTag {
     const { children, value } = this.tag;
     if (children.length > 0) throw new Error('MO tag should not have children');
 
-    const trimValue = trim(value);
+    const trimValue = value.trim();
     const mathOperator = this.getAsciimathOperator(trimValue);
 
     return mathOperator || trimValue;

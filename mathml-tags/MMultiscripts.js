@@ -1,5 +1,4 @@
 const BaseTag = require('./BaseTag');
-const trim = require('trim');
 
 module.exports = class MRow extends BaseTag {
   constructor(tag) {
@@ -43,5 +42,5 @@ function findChildrenByFlag(children, flag) {
 }
 
 function isOnlyEmptySpaces(arrOfStr) {
-    return trim(arrOfStr.join('')) === '';
+    return arrOfStr.join('').trim() === '';
 }

@@ -20,7 +20,6 @@
     "math"
   ],
   "dependencies": {
-    "trim": "^0.0.1",
     "xmldom": "^0.2.1"
   },
   "devDependencies": {
