@@ -25,7 +25,7 @@ const MTd = require('./MTd');
 const MText = require('./MText');
 const MTr = require('./MTr');
 const MUnder = require('./MUnder');
-const MUnderOver = require('./MUnderOver');
+const MUnderover = require('./MUnderover');
 
 
 module.exports = {
@@ -56,5 +56,5 @@ module.exports = {
   'mtext': MText,
   'mtr': MTr,
   'munder': MUnder,
-  'munderover': MUnderOver,
+  'munderover': MUnderover,
 };
