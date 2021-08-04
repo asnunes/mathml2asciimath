@@ -20,7 +20,7 @@
     "math"
   ],
   "dependencies": {
-    "xmldom": "^0.2.1"
+    "xmldom": "^0.6.0"
   },
   "devDependencies": {
     "jest": "^24.9.0"
